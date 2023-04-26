@@ -3,23 +3,16 @@ import Player from './Player'
 
 export default {
   title: 'Character',
-  args: {
-    variant: 'primary',
+  argTypes: {
+    char: {
+      type: { name: 'string', required: false },
+      defaultValue: 'Thanos',
+      options: ['Spiderman', 'Venom', 'Wolverine', 'Carnage'],
+      control: { type: 'radio' },
+    },
   },
   component: Player,
 }
-export const Default = {
-  render: () => <Player />,
-}
-export const Primary = {
-  render: () => <Player char="Spiderman" />,
-}
-export const Secondary = {
-  render: () => <Player char="Venom" />,
-}
-export const Tertiary = {
-  render: () => <Player char="Carnage" />,
-}
-export const Quaternary = {
-  render: () => <Player char="Thanos" />,
+export const Story = {
+  render: (args) => <Player {...args} />,
 }
