@@ -7,21 +7,21 @@ import Carnage from '../../assets/Carnage.gif'
 import Thanos from '../../assets/Thanos.gif'
 import './Player.css'
 
-function Player({ char = 'Wolverine' }) {
-  let image = Wolverine
+function Player({ char = 'Thanos' }) {
+  let image = Thanos
   if (char === 'Spiderman') {
     image = Spiderman
   } else if (char === 'Venom') {
     image = Venom
   } else if (char === 'Carnage') {
     image = Carnage
-  } else if (char === 'Thanos') {
-    image = Thanos
+  } else if (char === 'Wolverine') {
+    image = Wolverine
   }
   return (
     <div className="Player">
-      <h1>{char}</h1>
       <img src={image} alt="character" />
+      <h1>{char}</h1>
     </div>
   )
 }
