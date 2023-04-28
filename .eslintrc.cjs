@@ -12,6 +12,6 @@ module.exports = {
   plugins: ['react'],
   rules: {
     semi: ['error', 'never'],
-    'import/no-extraneous-dependencies': ['error', { devDependencies: false, optionalDependencies: false, peerDependencies: false }],
+    'import/no-extraneous-dependencies': ['error', { devDependencies: true, optionalDependencies: true, peerDependencies: true }],
   },
 }

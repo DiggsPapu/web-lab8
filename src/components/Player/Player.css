@@ -13,4 +13,9 @@
 .Player img{
     width: 80%;
     height: auto;
+    
 }
+.left{
+    transform: rotateY(180deg)
+}
+.right{transform:rotateY(0deg)}
