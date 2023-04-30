@@ -1,0 +1,26 @@
+.wall {
+    width: 20%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: transparent;
+}
+.wall img{
+    width: 100%;
+    height: auto;
+    background-color: transparent;    
+}
+.wallside {
+    width: 50%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: transparent;
+}
+.wallside img{
+    width: 100%;
+    height: auto;
+    background-color: transparent; 
+}

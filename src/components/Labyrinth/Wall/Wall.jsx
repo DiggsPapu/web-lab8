@@ -15,8 +15,13 @@ function Wall({ position }) {
     image = Side
   }
   return (
-    <div className="wall">
-      <img src={image} alt="Wall" />
+    <div className={
+      position === '-'
+        ? 'wallside'
+        : 'wall'
+    }
+    >
+      <img src={image} alt="position" />
     </div>
   )
 }
