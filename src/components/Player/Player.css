@@ -4,16 +4,18 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    background-color: transparent;
 }
 .Player h1{
     font-size: 100%;
     color: black;
     font-family: 'Courier New', Courier, monospace;
+    background-color: transparent;
 }
 .Player img{
     width: 80%;
     height: auto;
-    
+    background-color: transparent;    
 }
 .left{
     transform: rotateY(180deg)

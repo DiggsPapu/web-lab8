@@ -14,6 +14,5 @@ export default {
   component: Player,
 }
 export const Character = {
-  // eslint-disable-next-line react/jsx-props-no-spreading
   render: (args) => <Player {...args} />,
 }
