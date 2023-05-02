@@ -75,7 +75,7 @@ export default function Labyrinth({ style = 1 }) {
       )
     } if (style === 3) {
       return (
-        <div className="city-day-style">
+        <div className="war-style">
           <div className="labyrinth">
             {
             array.map((item, i) => (

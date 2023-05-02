@@ -1,6 +1,6 @@
 .war-wall {
-    width: 100%;
-    height: auto;
+    width: auto;
+    height: 200%;
     display: flex;
     flex-direction: column;
     float: center;
@@ -31,7 +31,4 @@
     flex-direction: column;
     align-items: right;
     background-color: transparent;
-}
-.inverted-colors {
-    filter: invert(20%);
 }
