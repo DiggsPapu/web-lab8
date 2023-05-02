@@ -1,4 +1,4 @@
-.wall {
+.war-wall {
     width: 100%;
     height: auto;
     display: flex;
@@ -6,12 +6,12 @@
     float: center;
     background-color: transparent;
 }
-.wall img{
+.war-wall img{
     width: 100%;
     height: auto;
     background-color: transparent;    
 }
-.wallside {
+.war-wallside {
     width: 100%;
     height: auto;
     display: flex;
@@ -19,12 +19,12 @@
     align-items: end;
     background-color: transparent;
 }
-.wallside img{
+.war-wallside img{
     width: 100%;
     height: auto;
     background-color: transparent; 
 }
-.street {
+.stone-street {
     width: 100%;
     height: 100%;
     display: flex;

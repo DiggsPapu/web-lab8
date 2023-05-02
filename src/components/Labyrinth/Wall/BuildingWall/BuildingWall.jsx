@@ -1,11 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Center from '@assets/BuildingSprites/buildingCenter.png'
-import Corner from '@assets/BuildingSprites/buildingCorner.png'
-import Goal from '@assets/BuildingSprites/goal.png'
-import './Wall.css'
+import Center from '@assets/Maze/BuildingSprites/buildingCenter.png'
+import Corner from '@assets/Maze/BuildingSprites/buildingCorner.png'
+import Goal from '@assets/Maze/BuildingSprites/goal.png'
+import './BuildingWall.css'
 
-function Wall({ position = ' ' }) {
+function BuildingWall({ position = ' ' }) {
   let image = ''
   if (position === ' ' || position === '\n') {
     return (
@@ -22,8 +22,8 @@ function Wall({ position = ' ' }) {
     <div className="inverted-colors">
       <div className={
       position === '-'
-        ? 'wallside'
-        : 'wall'
+        ? 'building-wallside'
+        : 'building-wall'
     }
       >
         <img src={image} alt="position" />
@@ -31,7 +31,7 @@ function Wall({ position = ' ' }) {
     </div>
   )
 }
-Wall.propTypes = {
+BuildingWall.propTypes = {
   position: PropTypes.string.isRequired,
 }
-export default Wall
+export default BuildingWall

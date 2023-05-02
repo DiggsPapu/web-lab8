@@ -2,8 +2,16 @@
     width: 100%;
     height: 100%;
     display: grid;
-    background-size: contain;
-    grid-template-columns: auto auto auto auto auto ;
-    grid-template-rows: auto auto auto auto auto;
-    background-color: black;
+    grid-template-rows: repeat(21,34.6px);
+    grid-template-columns: repeat(31,45px);
+    align-content: end;
+    align-items: end;
+    gap: 0;
+    background-color: transparent;
   }
+.city-night-style{
+    background-color: black;
+}
+.city-day-style{
+    background-color: white;
+}

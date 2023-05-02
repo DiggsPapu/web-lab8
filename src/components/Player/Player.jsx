@@ -1,10 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import WolverineHorizontal from '@assets/Wolverine.gif'
-import SpidermanHorizontal from '@assets/SpidermanSprites/SpidermanWalking.gif'
-import VenomHorizontal from '@assets/Venom.gif'
-import CarnageHorizontal from '@assets/Carnage.gif'
-import ThanosHorizontal from '@assets/Thanos.gif'
+import WolverineHorizontal from '@assets/Character/Wolverine.gif'
+import SpidermanHorizontal from '@assets/Character/SpidermanSprites/SpidermanWalking.gif'
+import VenomHorizontal from '@assets/Character/Venom.gif'
+import CarnageHorizontal from '@assets/Character/Carnage.gif'
+import ThanosHorizontal from '@assets/Character/Thanos.gif'
 import './Player.css'
 
 function Player({ char = 'Thanos' }) {

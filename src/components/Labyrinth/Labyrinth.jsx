@@ -1,16 +1,9 @@
 import React, { useEffect, useState } from 'react'
-import { render } from 'react-dom'
-import Wall from './Wall/Wall'
+import PropTypes from 'prop-types'
+import BuildingWall from './Wall/BuildingWall/BuildingWall'
+import './Labyrinth.css'
+import WarWall from './Wall/WarWall/WarWall'
 
-function getRows(maze) {
-  let i = 0
-  for (let j = 0; j < maze.length; j += 1) {
-    if (maze[j] === '\n') {
-      i += 1
-    }
-  }
-  return i
-}
 function removeAll(arr, target) {
   let i = 0
   while (i < arr.length) {
@@ -22,7 +15,7 @@ function removeAll(arr, target) {
   }
   return arr
 }
-export default function Labyrinth() {
+export default function Labyrinth({ style = 1 }) {
   const [maze, setMaze] = useState([])
   const [error, setError] = useState(null)
   const [isLoaded, setIsLoaded] = useState(false)
@@ -42,39 +35,63 @@ export default function Labyrinth() {
       )
   }, [])
   if (isLoaded && error == null) {
-    const columns = maze.indexOf('\n', 0)
-    const rows = getRows(maze)
     let array = maze.split('')
     array = removeAll(array, '\n')
-    console.log(columns)
-    console.log(rows)
-    console.log(maze)
-    return (
-      <div style={{
-        width: '100%',
-        height: '100%',
-        display: 'grid',
-        gridTemplateRows: 'repeat(21,34.6px)',
-        gridTemplateColumns: 'repeat(31,45px)',
-        alignContent: 'end',
-        alignItems: 'end',
-        gap: '0',
-        background: 'black',
-      }}
-      >
-        {
-          array.map((item, i) => (
-            <Wall
-              style={{
-                marginRight: '10%',
-              }}
-              position={item}
-              key={i}
-            />
-          ))
-        }
-      </div>
-    )
+    if (style === 1) {
+      return (
+        <div className="city-night-style">
+          <div className="labyrinth">
+            {
+            array.map((item, i) => (
+              <BuildingWall
+                style={{
+                  marginRight: '10%',
+                }}
+                position={item}
+                key={i}
+              />
+            ))
+          }
+          </div>
+        </div>
+      )
+    } if (style === 2) {
+      return (
+        <div className="city-day-style">
+          <div className="labyrinth">
+            {
+            array.map((item, i) => (
+              <BuildingWall
+                style={{
+                  marginRight: '10%',
+                }}
+                position={item}
+                key={i}
+              />
+            ))
+          }
+          </div>
+        </div>
+      )
+    } if (style === 3) {
+      return (
+        <div className="city-day-style">
+          <div className="labyrinth">
+            {
+            array.map((item, i) => (
+              <WarWall
+                style={{
+                  marginRight: '10%',
+                }}
+                position={item}
+                key={i}
+              />
+            ))
+          }
+          </div>
+        </div>
+      )
+    }
   } if (!isLoaded) { return (<div>Loading</div>) }
   return (
     <div>
@@ -82,4 +99,7 @@ export default function Labyrinth() {
       {error.message}
     </div>
   )
+}
+Labyrinth.propTypes = {
+  style: PropTypes.number.isRequired,
 }
