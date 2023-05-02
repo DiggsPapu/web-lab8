@@ -1,9 +1,9 @@
 .wall {
-    width: 20%;
+    width: 100%;
     height: auto;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    float: center;
     background-color: transparent;
 }
 .wall img{
@@ -12,15 +12,26 @@
     background-color: transparent;    
 }
 .wallside {
-    width: 50%;
+    width: 100%;
     height: auto;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: end;
     background-color: transparent;
 }
 .wallside img{
     width: 100%;
     height: auto;
     background-color: transparent; 
+}
+.street {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: right;
+    background-color: transparent;
+}
+.inverted-colors {
+    filter: invert(20%);
 }

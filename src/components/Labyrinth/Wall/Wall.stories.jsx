@@ -6,7 +6,8 @@ export default {
   argTypes: {
     position: {
       type: { name: 'string', required: false },
-      options: ['+', '-', '|'],
+      default: ' ',
+      options: ['+', '-', ' ', '|', 'p', 'g', '\n'],
       control: { type: 'radio' },
     },
   },
