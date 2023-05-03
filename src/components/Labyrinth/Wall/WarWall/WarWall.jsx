@@ -19,14 +19,13 @@ function WarWall({ position = ' ' }) {
     image = Goal
   }
   return (
-    <div className="inverted-colors">
-      <div className={
+    <div className={
       position === '-'
         ? 'war-wallside'
         : 'war-wall'
     }
-      >
-        {
+    >
+      {
           position === '|'
             ? (
               <>
@@ -38,7 +37,6 @@ function WarWall({ position = ' ' }) {
             : <img src={image} alt="position" />
         }
 
-      </div>
     </div>
   )
 }

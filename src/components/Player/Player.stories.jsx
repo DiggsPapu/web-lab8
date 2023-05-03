@@ -2,7 +2,7 @@ import React from 'react'
 import Player from './Player'
 
 export default {
-  title: 'Character',
+  title: 'Player',
   argTypes: {
     char: {
       type: { name: 'string', required: false },

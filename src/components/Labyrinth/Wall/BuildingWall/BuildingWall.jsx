@@ -19,15 +19,13 @@ function BuildingWall({ position = ' ' }) {
     image = Goal
   }
   return (
-    <div className="inverted-colors">
-      <div className={
+    <div className={
       position === '-'
         ? 'building-wallside'
         : 'building-wall'
     }
-      >
-        <img src={image} alt="position" />
-      </div>
+    >
+      <img src={image} alt="position" />
     </div>
   )
 }

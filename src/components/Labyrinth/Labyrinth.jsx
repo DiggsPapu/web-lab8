@@ -15,7 +15,7 @@ function removeAll(arr, target) {
   }
   return arr
 }
-export default function Labyrinth({ style = 1 }) {
+export default function Labyrinth({ theme = 2 }, { inverted = 0 }) {
   const [maze, setMaze] = useState([])
   const [error, setError] = useState(null)
   const [isLoaded, setIsLoaded] = useState(false)
@@ -34,14 +34,21 @@ export default function Labyrinth({ style = 1 }) {
         },
       )
   }, [])
+  console.log(maze)
   if (isLoaded && error == null) {
     let array = maze.split('')
     array = removeAll(array, '\n')
-    if (style === 1) {
+    if (theme === 1) {
       return (
-        <div className="city-night-style">
-          <div className="labyrinth">
-            {
+        <div className={
+          inverted
+            ? 'inverted-colors'
+            : 'normal-colors'
+        }
+        >
+          <div className="city-night-style">
+            <div className="labyrinth">
+              {
             array.map((item, i) => (
               <BuildingWall
                 style={{
@@ -52,14 +59,21 @@ export default function Labyrinth({ style = 1 }) {
               />
             ))
           }
+            </div>
           </div>
         </div>
       )
-    } if (style === 2) {
+    } if (theme === 2) {
       return (
-        <div className="city-day-style">
-          <div className="labyrinth">
-            {
+        <div className={
+          inverted
+            ? 'inverted-colors'
+            : 'normal-colors'
+        }
+        >
+          <div className="city-day-style">
+            <div className="labyrinth">
+              {
             array.map((item, i) => (
               <BuildingWall
                 style={{
@@ -70,14 +84,21 @@ export default function Labyrinth({ style = 1 }) {
               />
             ))
           }
+            </div>
           </div>
         </div>
       )
-    } if (style === 3) {
+    } if (theme === 3) {
       return (
-        <div className="war-style">
-          <div className="labyrinth">
-            {
+        <div className={
+          inverted
+            ? 'inverted-colors'
+            : 'normal-colors'
+        }
+        >
+          <div className="war-style">
+            <div className="labyrinth">
+              {
             array.map((item, i) => (
               <WarWall
                 style={{
@@ -88,6 +109,7 @@ export default function Labyrinth({ style = 1 }) {
               />
             ))
           }
+            </div>
           </div>
         </div>
       )
@@ -101,5 +123,6 @@ export default function Labyrinth({ style = 1 }) {
   )
 }
 Labyrinth.propTypes = {
-  style: PropTypes.number.isRequired,
+  inverted: PropTypes.bool.isRequired,
+  theme: PropTypes.oneOf([1, 2, 3]).isRequired,
 }
