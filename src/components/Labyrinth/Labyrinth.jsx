@@ -24,7 +24,6 @@ export default function Labyrinth({ theme = 1 }, { inverted = 0 }) {
   const [arrayPos, setArrayPos] = useState(32)
   let array = []
   function handleKeyDown(event) {
-    console.log(`Back Pos: ${array[arrayPos]} val:${arrayPos}`)
     switch (event.key) {
       case 'ArrowUp':
 
