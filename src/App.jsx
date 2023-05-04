@@ -1,11 +1,11 @@
 import React from 'react'
 import './App.css'
 // import Player from '@components/Player/Player'
-import Labyrinth from '@components/Labyrinth/Labyrinth'
+import Game from '@pages/Game/Game'
 
 function App() {
   return (
-    <Labyrinth />
+    <Game />
   )
 }
 

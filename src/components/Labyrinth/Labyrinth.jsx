@@ -20,6 +20,48 @@ export default function Labyrinth({ theme = 1 }, { inverted = 0 }) {
   const [maze, setMaze] = useState([])
   const [error, setError] = useState(null)
   const [isLoaded, setIsLoaded] = useState(false)
+  const [position, setPosition] = useState({ row: 2, col: 2 })
+  const [arrayPos, setArrayPos] = useState(32)
+  let array = []
+  function handleKeyDown(event) {
+    console.log(`Back Pos: ${array[arrayPos]} val:${arrayPos}`)
+    switch (event.key) {
+      case 'ArrowUp':
+
+        if (array[arrayPos - 31] === ' ' || array[arrayPos - 31] === 'p') {
+          setArrayPos(arrayPos - 31)
+          setPosition({ row: position.row - 1, col: position.col })
+        }
+        break
+      case 'ArrowDown':
+        if (array[arrayPos + 31] === ' ' || array[arrayPos + 31] === 'p') {
+          setArrayPos(arrayPos + 31)
+          setPosition({ row: position.row + 1, col: position.col })
+        }
+        break
+      case 'ArrowLeft':
+        if (array[arrayPos - 1] === ' ' || array[arrayPos - 1] === 'p') {
+          setArrayPos(arrayPos - 1)
+          setPosition({ row: position.row, col: position.col - 1 })
+        }
+        break
+      case 'ArrowRight':
+        if (array[arrayPos + 1] === ' ' || array[arrayPos + 1] === 'p') {
+          setArrayPos(arrayPos + 1)
+          setPosition({ row: position.row, col: position.col + 1 })
+        }
+        break
+      default:
+        break
+    }
+  }
+  useEffect(() => {
+    window.addEventListener('keydown', handleKeyDown)
+
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown)
+    }
+  })
   useEffect(() => {
     fetch('https://maze.uvgenios.online/?type=text&w=10&h=10')
       // It does with text and not Json bc it has ASCII characters and not json.
@@ -35,10 +77,11 @@ export default function Labyrinth({ theme = 1 }, { inverted = 0 }) {
         },
       )
   }, [])
-  console.log(maze)
+  // console.log(maze)
   if (isLoaded && error == null) {
-    let array = maze.split('')
+    array = maze.split('')
     array = removeAll(array, '\n')
+    // console.log(array)
     if (theme === 1) {
       return (
         <div className={
@@ -52,7 +95,15 @@ export default function Labyrinth({ theme = 1 }, { inverted = 0 }) {
               {
             array.map((item, i) => {
               if (item === 'p') {
-                return (<Player />)
+                return (
+                  <div
+                    style={{ gridRow: position.row, gridColumn: position.col }}
+                  >
+                    <Player
+                      key="player"
+                    />
+                  </div>
+                )
               }
               return (
                 <BuildingWall
@@ -82,7 +133,15 @@ export default function Labyrinth({ theme = 1 }, { inverted = 0 }) {
               {
             array.map((item, i) => {
               if (item === 'p') {
-                return (<Player />)
+                return (
+                  <BuildingWall
+                    style={{
+                      marginRight: '10%',
+                    }}
+                    position=" "
+                    key={i}
+                  />
+                )
               }
               return (
                 <BuildingWall
@@ -112,7 +171,13 @@ export default function Labyrinth({ theme = 1 }, { inverted = 0 }) {
               {
             array.map((item, i) => {
               if (item === 'p') {
-                return (<Player />)
+                <WarWall
+                  style={{
+                    marginRight: '10%',
+                  }}
+                  position=" "
+                  key={i}
+                />
               }
               return (
                 <WarWall
