@@ -15,7 +15,7 @@ function BuildingWall({ position = ' ' }) {
     image = Center
   } else if (position === '|') {
     image = Corner
-  } else if (position === 'g' || position === 'p') {
+  } else if (position === 'g') {
     image = Goal
   }
   return (

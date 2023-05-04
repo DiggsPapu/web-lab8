@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
+import Player from '@components/Player/Player'
 import BuildingWall from './Wall/BuildingWall/BuildingWall'
 import './Labyrinth.css'
 import WarWall from './Wall/WarWall/WarWall'
@@ -15,7 +16,7 @@ function removeAll(arr, target) {
   }
   return arr
 }
-export default function Labyrinth({ theme = 2 }, { inverted = 0 }) {
+export default function Labyrinth({ theme = 1 }, { inverted = 0 }) {
   const [maze, setMaze] = useState([])
   const [error, setError] = useState(null)
   const [isLoaded, setIsLoaded] = useState(false)
@@ -49,15 +50,20 @@ export default function Labyrinth({ theme = 2 }, { inverted = 0 }) {
           <div className="city-night-style">
             <div className="labyrinth">
               {
-            array.map((item, i) => (
-              <BuildingWall
-                style={{
-                  marginRight: '10%',
-                }}
-                position={item}
-                key={i}
-              />
-            ))
+            array.map((item, i) => {
+              if (item === 'p') {
+                return (<Player />)
+              }
+              return (
+                <BuildingWall
+                  style={{
+                    marginRight: '10%',
+                  }}
+                  position={item}
+                  key={i}
+                />
+              )
+            })
           }
             </div>
           </div>
@@ -74,15 +80,20 @@ export default function Labyrinth({ theme = 2 }, { inverted = 0 }) {
           <div className="city-day-style">
             <div className="labyrinth">
               {
-            array.map((item, i) => (
-              <BuildingWall
-                style={{
-                  marginRight: '10%',
-                }}
-                position={item}
-                key={i}
-              />
-            ))
+            array.map((item, i) => {
+              if (item === 'p') {
+                return (<Player />)
+              }
+              return (
+                <BuildingWall
+                  style={{
+                    marginRight: '10%',
+                  }}
+                  position={item}
+                  key={i}
+                />
+              )
+            })
           }
             </div>
           </div>
@@ -99,15 +110,20 @@ export default function Labyrinth({ theme = 2 }, { inverted = 0 }) {
           <div className="war-style">
             <div className="labyrinth">
               {
-            array.map((item, i) => (
-              <WarWall
-                style={{
-                  marginRight: '10%',
-                }}
-                position={item}
-                key={i}
-              />
-            ))
+            array.map((item, i) => {
+              if (item === 'p') {
+                return (<Player />)
+              }
+              return (
+                <WarWall
+                  style={{
+                    marginRight: '10%',
+                  }}
+                  position={item}
+                  key={i}
+                />
+              )
+            })
           }
             </div>
           </div>
