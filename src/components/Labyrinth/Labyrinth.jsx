@@ -16,7 +16,7 @@ function removeAll(arr, target) {
   }
   return arr
 }
-export default function Labyrinth({ theme = 1 }, { inverted = 0 }) {
+export default function Labyrinth({ theme = 1, inverted = 0 }) {
   const [maze, setMaze] = useState([])
   const [error, setError] = useState(null)
   const [isLoaded, setIsLoaded] = useState(false)
@@ -26,7 +26,6 @@ export default function Labyrinth({ theme = 1 }, { inverted = 0 }) {
   function handleKeyDown(event) {
     switch (event.key) {
       case 'ArrowUp':
-
         if (array[arrayPos - 31] === ' ' || array[arrayPos - 31] === 'p') {
           setArrayPos(arrayPos - 31)
           setPosition({ row: position.row - 1, col: position.col })
@@ -133,13 +132,13 @@ export default function Labyrinth({ theme = 1 }, { inverted = 0 }) {
             array.map((item, i) => {
               if (item === 'p') {
                 return (
-                  <BuildingWall
-                    style={{
-                      marginRight: '10%',
-                    }}
-                    position=" "
-                    key={i}
-                  />
+                  <div
+                    style={{ gridRow: position.row, gridColumn: position.col }}
+                  >
+                    <Player
+                      key="player"
+                    />
+                  </div>
                 )
               }
               return (
@@ -170,13 +169,15 @@ export default function Labyrinth({ theme = 1 }, { inverted = 0 }) {
               {
             array.map((item, i) => {
               if (item === 'p') {
-                <WarWall
-                  style={{
-                    marginRight: '10%',
-                  }}
-                  position=" "
-                  key={i}
-                />
+                return (
+                  <div
+                    style={{ gridRow: position.row, gridColumn: position.col }}
+                  >
+                    <Player
+                      key="player"
+                    />
+                  </div>
+                )
               }
               return (
                 <WarWall
