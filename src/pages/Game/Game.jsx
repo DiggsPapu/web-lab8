@@ -91,7 +91,7 @@ export default function Game() {
           }}
         >
           <div
-            style={{ gridRow: position.row, gridColumn: position.col }}
+            style={{ gridRow: position.row, gridColumn: position.col, alighSelf: 'right' }}
           >
             <Player />
           </div>
