@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import Labyrinth from '@components/Labyrinth/Labyrinth'
 import Maze from '@components/Maze/Maze'
 import Player from '../../components/Player/Player'
 import './Game.css'
@@ -21,6 +20,7 @@ export default function Game() {
   const [isLoaded, setIsLoaded] = useState(false)
   const [position, setPosition] = useState({ row: 2, col: 2 })
   const [arrayPos, setArrayPos] = useState(32)
+  const [pos, setPos] = useState('right')
   let array = []
   function handleKeyDown(event) {
     switch (event.key) {
@@ -28,24 +28,28 @@ export default function Game() {
         if (array[arrayPos - 31] === ' ' || array[arrayPos - 31] === 'p') {
           setArrayPos(arrayPos - 31)
           setPosition({ row: position.row - 1, col: position.col })
+          setPos('up')
         }
         break
       case 'ArrowDown':
         if (array[arrayPos + 31] === ' ' || array[arrayPos + 31] === 'p') {
           setArrayPos(arrayPos + 31)
           setPosition({ row: position.row + 1, col: position.col })
+          setPos('down')
         }
         break
       case 'ArrowLeft':
         if (array[arrayPos - 1] === ' ' || array[arrayPos - 1] === 'p') {
           setArrayPos(arrayPos - 1)
           setPosition({ row: position.row, col: position.col - 1 })
+          setPos('left')
         }
         break
       case 'ArrowRight':
         if (array[arrayPos + 1] === ' ' || array[arrayPos + 1] === 'p') {
           setArrayPos(arrayPos + 1)
           setPosition({ row: position.row, col: position.col + 1 })
+          setPos('right')
         }
         break
       default:
@@ -74,11 +78,9 @@ export default function Game() {
         },
       )
   }, [])
-  console.log(maze)
   if (isLoaded && error == null) {
     array = maze.split('')
     array = removeAll(array, '\n')
-    console.log(array)
     return (
       <div className="Game">
         <Maze theme={1} inverted={false} maze={array} />
@@ -93,7 +95,7 @@ export default function Game() {
           <div
             style={{ gridRow: position.row, gridColumn: position.col, alighSelf: 'right' }}
           >
-            <Player />
+            <Player position={pos} />
           </div>
         </div>
       </div>
