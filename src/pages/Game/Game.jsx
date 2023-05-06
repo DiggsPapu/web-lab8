@@ -81,8 +81,21 @@ export default function Game() {
     console.log(array)
     return (
       <div className="Game">
-        <Player />
-        <Maze theme={3} inverted={1} maze={array} />
+        <Maze theme={1} inverted={false} maze={array} />
+        <div
+          className="maze-wrap"
+          style={{
+            position: 'fixed',
+            top: '0px',
+            left: '0px',
+          }}
+        >
+          <div
+            style={{ gridRow: position.row, gridColumn: position.col }}
+          >
+            <Player />
+          </div>
+        </div>
       </div>
     )
   } if (!isLoaded) { return (<div>Loading</div>) }

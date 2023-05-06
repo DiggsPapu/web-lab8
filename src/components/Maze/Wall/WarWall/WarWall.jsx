@@ -7,7 +7,7 @@ import './WarWall.css'
 
 function WarWall({ position = ' ' }) {
   let image = ''
-  if (position === ' ' || position === '\n') {
+  if (position === ' ' || position === 'p') {
     return (
       <div className="stone-street" />
     )

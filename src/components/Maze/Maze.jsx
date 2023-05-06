@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
-import Player from '@components/Player/Player'
 import BuildingWall from './Wall/BuildingWall/BuildingWall'
 import WarWall from './Wall/WarWall/WarWall'
 import './Maze.css'
@@ -30,45 +29,6 @@ export default function Maze({
     '+', '-', '-', '+', '-', '-', '+', '-', '-', '+', '-', '-', '+', '-', '-', '+', '-', '-', '+', '-', '-', '+', '-', '-', '+', '-', '-', '+', '-', '-', '+',
   ],
 }) {
-  const [position, setPosition] = useState({ row: 2, col: 2 })
-  const [arrayPos, setArrayPos] = useState(32)
-  function handleKeyDown(event) {
-    switch (event.key) {
-      case 'ArrowUp':
-        if (maze[arrayPos - 31] === ' ' || maze[arrayPos - 31] === 'p') {
-          setArrayPos(arrayPos - 31)
-          setPosition({ row: position.row - 1, col: position.col })
-        }
-        break
-      case 'ArrowDown':
-        if (maze[arrayPos + 31] === ' ' || maze[arrayPos + 31] === 'p') {
-          setArrayPos(arrayPos + 31)
-          setPosition({ row: position.row + 1, col: position.col })
-        }
-        break
-      case 'ArrowLeft':
-        if (maze[arrayPos - 1] === ' ' || maze[arrayPos - 1] === 'p') {
-          setArrayPos(arrayPos - 1)
-          setPosition({ row: position.row, col: position.col - 1 })
-        }
-        break
-      case 'ArrowRight':
-        if (maze[arrayPos + 1] === ' ' || maze[arrayPos + 1] === 'p') {
-          setArrayPos(arrayPos + 1)
-          setPosition({ row: position.row, col: position.col + 1 })
-        }
-        break
-      default:
-        break
-    }
-  }
-  useEffect(() => {
-    window.addEventListener('keydown', handleKeyDown)
-
-    return () => {
-      window.removeEventListener('keydown', handleKeyDown)
-    }
-  })
   if (theme === 1) {
     return (
       <div className={
@@ -78,30 +38,17 @@ export default function Maze({
       }
       >
         <div className="city-night-style">
-          <div className="labyrinth">
+          <div className="maze">
             {
-          maze.map((item, i) => {
-            if (item === 'p') {
-              return (
-                <div
-                  style={{ gridRow: position.row, gridColumn: position.col }}
-                >
-                  <Player
-                    key="player"
-                  />
-                </div>
-              )
-            }
-            return (
-              <BuildingWall
-                style={{
-                  marginRight: '10%',
-                }}
-                position={item}
-                key={i}
-              />
-            )
-          })
+          maze.map((item, i) => (
+            <BuildingWall
+              style={{
+                marginRight: '10%',
+              }}
+              position={item}
+              key={i}
+            />
+          ))
         }
           </div>
         </div>
@@ -116,30 +63,17 @@ export default function Maze({
       }
       >
         <div className="city-day-style">
-          <div className="labyrinth">
+          <div className="maze">
             {
-          maze.map((item, i) => {
-            if (item === 'p') {
-              return (
-                <div
-                  style={{ gridRow: position.row, gridColumn: position.col }}
-                >
-                  <Player
-                    key="player"
-                  />
-                </div>
-              )
-            }
-            return (
-              <BuildingWall
-                style={{
-                  marginRight: '10%',
-                }}
-                position={item}
-                key={i}
-              />
-            )
-          })
+          maze.map((item, i) => (
+            <BuildingWall
+              style={{
+                marginRight: '10%',
+              }}
+              position={item}
+              key={i}
+            />
+          ))
         }
           </div>
         </div>
@@ -154,30 +88,17 @@ export default function Maze({
       }
       >
         <div className="war-style">
-          <div className="labyrinth">
+          <div className="maze">
             {
-          maze.map((item, i) => {
-            if (item === 'p') {
-              return (
-                <div
-                  style={{ gridRow: position.row, gridColumn: position.col }}
-                >
-                  <Player
-                    key="player"
-                  />
-                </div>
-              )
-            }
-            return (
-              <WarWall
-                style={{
-                  marginRight: '10%',
-                }}
-                position={item}
-                key={i}
-              />
-            )
-          })
+          maze.map((item, i) => (
+            <WarWall
+              style={{
+                marginRight: '10%',
+              }}
+              position={item}
+              key={i}
+            />
+          ))
         }
           </div>
         </div>

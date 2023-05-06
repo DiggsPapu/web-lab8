@@ -7,7 +7,7 @@ import './BuildingWall.css'
 
 function BuildingWall({ position = ' ' }) {
   let image = ''
-  if (position === ' ' || position === '\n') {
+  if (position === ' ' || position === 'p') {
     return (
       <div className="street" />
     )
