@@ -5,7 +5,7 @@ import WarWall from './Wall/WarWall/WarWall'
 import './Maze.css'
 
 export default function Maze({
-  theme = 1, inverted = 0, maze = [
+  theme = 1, inverted = 0, columns = 31, rows = 21, maze = [
     '+', '-', '-', '+', '-', '-', '+', '-', '-', '+', '-', '-', '+', '-', '-', '+', '-', '-', '+', '-', '-', '+', '-', '-', '+', '-', '-', '+', '-', '-', '+',
     '|', 'p', ' ', ' ', ' ', ' ', '|', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '|', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '|',
     '+', ' ', ' ', '+', ' ', ' ', '+', '-', '-', '+', '-', '-', '+', '-', '-', '+', ' ', ' ', '+', ' ', ' ', '+', '-', '-', '+', ' ', ' ', '+', ' ', ' ', '+',
@@ -42,8 +42,8 @@ export default function Maze({
             width: '100%',
             height: '100%',
             display: 'grid',
-            gridTemplateRows: 'repeat(21,34.6px)',
-            gridTemplateColumns: 'repeat(31,45px)',
+            gridTemplateRows: `repeat(${rows},34.6px)`,
+            gridTemplateColumns: `repeat(${columns},45px)`,
             alignContent: 'end',
             alignItems: 'end',
             gap: '0',
@@ -119,5 +119,7 @@ export default function Maze({
 Maze.propTypes = {
   inverted: PropTypes.bool.isRequired,
   theme: PropTypes.oneOf([1, 2, 3]).isRequired,
+  rows: PropTypes.number.isRequired,
+  columns: PropTypes.number.isRequired,
   maze: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
 }
