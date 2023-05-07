@@ -22,7 +22,7 @@ function getDimens(maze) {
       rows += 1
     }
   }
-  return [rows - 2, maze.indexOf('\n', 0)]
+  return [rows - 2, maze.indexOf('\n', 0), 1395 / maze.indexOf('\n', 0), 727 / (rows - 2)]
 }
 export default function Game({ height = 10, len = 10 }) {
   const [maze, setMaze] = useState([])
@@ -92,19 +92,18 @@ export default function Game({ height = 10, len = 10 }) {
   if (isLoaded && error == null) {
     array = maze.split('')
     dimens = getDimens(maze)
-    console.log(dimens)
     array = removeAll(array, '\n')
     return (
       <div className="game">
-        <Maze theme={1} inverted={false} maze={array} />
+        <Maze theme={1} inverted={false} maze={array} dimens={dimens} />
         <div
           className="maze-wrap"
           style={{
             width: '100%',
             height: '100%',
             display: 'grid',
-            gridTemplateRows: `repeat(${dimens[0]},34.6px)`,
-            gridTemplateColumns: `repeat(${dimens[1]},45px)`,
+            gridTemplateRows: `repeat(${dimens[0]},${dimens[3]})`,
+            gridTemplateColumns: `repeat(${dimens[1]},${dimens[2]})`,
             alignContent: 'end',
             alignItems: 'end',
             gap: '0',
