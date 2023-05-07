@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import PropTypes from 'prop-types'
 import Maze from '@components/Maze/Maze'
 import Player from '../../components/Player/Player'
 import './Game.css'
@@ -14,7 +15,7 @@ function removeAll(arr, target) {
   }
   return arr
 }
-export default function Game() {
+export default function Game({ height = 10, len = 10 }) {
   const [maze, setMaze] = useState([])
   const [error, setError] = useState(null)
   const [isLoaded, setIsLoaded] = useState(false)
@@ -64,7 +65,7 @@ export default function Game() {
     }
   })
   useEffect(() => {
-    fetch('https://maze.uvgenios.online/?type=text&w=10&h=10')
+    fetch(`https://maze.uvgenios.online/?type=text&w=${len}&h=${height}`)
       // It does with text and not Json bc it has ASCII characters and not json.
       .then((res) => res.text())
       .then(
@@ -107,4 +108,8 @@ export default function Game() {
       {error.message}
     </div>
   )
+}
+Game.propTypes = {
+  len: PropTypes.number.isRequired,
+  height: PropTypes.number.isRequired,
 }
