@@ -38,7 +38,17 @@ export default function Maze({
       }
       >
         <div className="city-night-style">
-          <div className="maze">
+          <div style={{
+            width: '100%',
+            height: '100%',
+            display: 'grid',
+            gridTemplateRows: 'repeat(21,34.6px)',
+            gridTemplateColumns: 'repeat(31,45px)',
+            alignContent: 'end',
+            alignItems: 'end',
+            gap: '0',
+          }}
+          >
             {
           maze.map((item, i) => (
             <BuildingWall

@@ -15,6 +15,15 @@ function removeAll(arr, target) {
   }
   return arr
 }
+function getDimens(maze) {
+  let rows = 0
+  for (let j = 0; j < maze.length; j += 1) {
+    if (maze[j] === '\n') {
+      rows += 1
+    }
+  }
+  return [rows, maze.indexOf('\n', 0)]
+}
 export default function Game({ height = 10, len = 10 }) {
   const [maze, setMaze] = useState([])
   const [error, setError] = useState(null)
@@ -22,6 +31,7 @@ export default function Game({ height = 10, len = 10 }) {
   const [position, setPosition] = useState({ row: 2, col: 2 })
   const [arrayPos, setArrayPos] = useState(32)
   const [pos, setPos] = useState('right')
+  let dimens = []
   let array = []
   function handleKeyDown(event) {
     switch (event.key) {
@@ -81,13 +91,24 @@ export default function Game({ height = 10, len = 10 }) {
   }, [])
   if (isLoaded && error == null) {
     array = maze.split('')
+    dimens = getDimens(maze)
+    console.log(dimens)
     array = removeAll(array, '\n')
     return (
-      <div className="Game">
+      <div className="game">
         <Maze theme={1} inverted={false} maze={array} />
         <div
           className="maze-wrap"
           style={{
+            width: '100%',
+            height: '100%',
+            display: 'grid',
+            gridTemplateRows: 'repeat(21,34.6px)',
+            gridTemplateColumns: 'repeat(31,45px)',
+            alignContent: 'end',
+            alignItems: 'end',
+            gap: '0',
+            backgroundColor: 'transparent',
             position: 'fixed',
             top: '0px',
             left: '0px',
