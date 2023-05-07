@@ -22,7 +22,7 @@ function getDimens(maze) {
       rows += 1
     }
   }
-  return [rows, maze.indexOf('\n', 0)]
+  return [rows - 2, maze.indexOf('\n', 0)]
 }
 export default function Game({ height = 10, len = 10 }) {
   const [maze, setMaze] = useState([])
@@ -103,8 +103,8 @@ export default function Game({ height = 10, len = 10 }) {
             width: '100%',
             height: '100%',
             display: 'grid',
-            gridTemplateRows: 'repeat(21,34.6px)',
-            gridTemplateColumns: 'repeat(31,45px)',
+            gridTemplateRows: `repeat(${dimens[0]},34.6px)`,
+            gridTemplateColumns: `repeat(${dimens[1]},45px)`,
             alignContent: 'end',
             alignItems: 'end',
             gap: '0',
