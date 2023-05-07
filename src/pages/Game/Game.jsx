@@ -116,7 +116,7 @@ export default function Game({ height = 10, len = 10 }) {
           <div
             style={{ gridRow: position.row, gridColumn: position.col, alighSelf: 'right' }}
           >
-            <Player position={pos} />
+            <Player position={pos} char="Venom" />
           </div>
         </div>
       </div>
