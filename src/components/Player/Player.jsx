@@ -11,7 +11,7 @@ import ThanosUp from '@assets/Character/ThanosSprites/thanosUp.gif'
 import ThanosDown from '@assets/Character/ThanosSprites/thanosDown.gif'
 import './Player.css'
 
-function Player({ char = 'Thanos', position = 'right' }) {
+function Player({ char = 'Thanos', position = 'right', altitude = 727 / 21 }) {
   let image = ThanosHorizontal
   if (char === 'Spiderman') {
     image = SpidermanHorizontal
@@ -35,19 +35,30 @@ function Player({ char = 'Thanos', position = 'right' }) {
     }
   }
   return (
-    <div className="Player">
+    <div
+      className="Player"
+    >
       {position === 'right' || position === 'left'
         ? (
-          <>
-            <img className={position === 'right' ? 'right' : 'left'} src={image} alt="character" />
-            <h1>{char}</h1>
-          </>
+          <img
+            className={position === 'right' ? 'right' : 'left'}
+            src={image}
+            alt="character"
+            style={{
+              height: `${altitude}px`,
+              width: 'auto',
+            }}
+          />
         )
         : (
-          <>
-            <img src={image} alt="character" />
-            <h1>{char}</h1>
-          </>
+          <img
+            src={image}
+            alt="character"
+            style={{
+              height: `${altitude}px`,
+              width: 'auto',
+            }}
+          />
         )}
     </div>
   )
@@ -55,5 +66,6 @@ function Player({ char = 'Thanos', position = 'right' }) {
 Player.propTypes = {
   char: PropTypes.string.isRequired,
   position: PropTypes.oneOf(['right', 'left', 'up', 'down']).isRequired,
+  altitude: PropTypes.number.isRequired,
 }
 export default Player

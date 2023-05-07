@@ -36,6 +36,8 @@ export default function Game({ height = 10, len = 10 }) {
   function handleKeyDown(event) {
     switch (event.key) {
       case 'ArrowUp':
+        console.log(array)
+        console.log(arrayPos - dimens[1])
         if (array[arrayPos - dimens[1]] === ' ' || array[arrayPos - dimens[1]] === 'p') {
           setArrayPos(arrayPos - dimens[1])
           setPosition({ row: position.row - 1, col: position.col })
@@ -43,6 +45,8 @@ export default function Game({ height = 10, len = 10 }) {
         }
         break
       case 'ArrowDown':
+        console.log(array)
+        console.log(arrayPos + dimens[1])
         if (array[arrayPos + dimens[1]] === ' ' || array[arrayPos + dimens[1]] === 'p') {
           setArrayPos(arrayPos + dimens[1])
           setPosition({ row: position.row + 1, col: position.col })
@@ -50,6 +54,8 @@ export default function Game({ height = 10, len = 10 }) {
         }
         break
       case 'ArrowLeft':
+        console.log(array)
+        console.log(arrayPos - 1)
         if (array[arrayPos - 1] === ' ' || array[arrayPos - 1] === 'p') {
           setArrayPos(arrayPos - 1)
           setPosition({ row: position.row, col: position.col - 1 })
@@ -57,6 +63,8 @@ export default function Game({ height = 10, len = 10 }) {
         }
         break
       case 'ArrowRight':
+        console.log(array)
+        console.log(arrayPos + 1)
         if (array[arrayPos + 1] === ' ' || array[arrayPos + 1] === 'p') {
           setArrayPos(arrayPos + 1)
           setPosition({ row: position.row, col: position.col + 1 })
@@ -82,6 +90,7 @@ export default function Game({ height = 10, len = 10 }) {
         (res) => {
           setIsLoaded(true)
           setMaze(res)
+          setArrayPos(res.indexOf('p', 0))
         },
         (mistake) => {
           setIsLoaded(true)
@@ -96,27 +105,24 @@ export default function Game({ height = 10, len = 10 }) {
     return (
       <div className="game">
         <Maze theme={1} inverted={false} maze={array} dimens={dimens} />
-        <div
-          className="maze-wrap"
-          style={{
-            width: '100%',
-            height: '100%',
-            display: 'grid',
-            gridTemplateRows: `repeat(${dimens[0]},${dimens[3]})`,
-            gridTemplateColumns: `repeat(${dimens[1]},${dimens[2]})`,
-            alignContent: 'end',
-            alignItems: 'end',
-            gap: '0',
-            backgroundColor: 'transparent',
-            position: 'fixed',
-            top: '0px',
-            left: '0px',
-          }}
+        <div style={{
+          width: '100%',
+          height: '100%',
+          display: 'grid',
+          gridTemplateRows: `repeat(${dimens[0]},${dimens[3]}px)`,
+          gridTemplateColumns: `repeat(${dimens[1]},${dimens[2]}px)`,
+          alignContent: 'end',
+          alignItems: 'end',
+          gap: '0',
+          position: 'absolute',
+          top: '0px',
+          left: `${dimens[2]}px`,
+        }}
         >
           <div
             style={{ gridRow: position.row, gridColumn: position.col, alighSelf: 'right' }}
           >
-            <Player position={pos} char="Venom" />
+            <Player position={pos} char="Venom" altitude={dimens[3]} />
           </div>
         </div>
       </div>

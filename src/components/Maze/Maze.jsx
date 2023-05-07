@@ -47,6 +47,9 @@ export default function Maze({
             alignContent: 'end',
             alignItems: 'end',
             gap: '0',
+            position: 'absolute',
+            top: '0px',
+            left: '0px',
           }}
           >
             {

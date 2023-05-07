@@ -5,7 +5,7 @@ import Game from '@pages/Game/Game'
 
 function App() {
   return (
-    <Game height={10} len={10} />
+    <Game height={20} len={50} />
   )
 }
 
