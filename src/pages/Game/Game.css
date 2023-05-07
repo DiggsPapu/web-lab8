@@ -1,11 +1,11 @@
 .maze-wrap{  
-    width: 1395px;
-    height: 727px;
-    display: grid;
-    grid-template-rows: repeat(21,34.6px);
-    grid-template-columns: repeat(31,45px);
-    align-content: end;
-    align-items: end;
-    gap: 0;
-    background-color: transparent;
-  }
+  width: 1395px;
+  height: 727px;
+  display: grid;
+  grid-template-rows: repeat(21,34.6px);
+  grid-template-columns: repeat(31,45px);
+  align-content: end;
+  align-items: end;
+  gap: 0;
+  background-color: transparent;
+}

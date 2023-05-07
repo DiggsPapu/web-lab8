@@ -21,7 +21,6 @@ export default function Game() {
   const [position, setPosition] = useState({ row: 2, col: 2 })
   const [arrayPos, setArrayPos] = useState(32)
   const [pos, setPos] = useState('right')
-  let lastPos = 'right'
   let array = []
   function handleKeyDown(event) {
     switch (event.key) {
@@ -29,7 +28,6 @@ export default function Game() {
         if (array[arrayPos - 31] === ' ' || array[arrayPos - 31] === 'p') {
           setArrayPos(arrayPos - 31)
           setPosition({ row: position.row - 1, col: position.col })
-          lastPos = pos
           setPos('up')
         }
         break
@@ -37,7 +35,6 @@ export default function Game() {
         if (array[arrayPos + 31] === ' ' || array[arrayPos + 31] === 'p') {
           setArrayPos(arrayPos + 31)
           setPosition({ row: position.row + 1, col: position.col })
-          lastPos = pos
           setPos('down')
         }
         break
@@ -45,7 +42,6 @@ export default function Game() {
         if (array[arrayPos - 1] === ' ' || array[arrayPos - 1] === 'p') {
           setArrayPos(arrayPos - 1)
           setPosition({ row: position.row, col: position.col - 1 })
-          lastPos = pos
           setPos('left')
         }
         break
@@ -53,7 +49,6 @@ export default function Game() {
         if (array[arrayPos + 1] === ' ' || array[arrayPos + 1] === 'p') {
           setArrayPos(arrayPos + 1)
           setPosition({ row: position.row, col: position.col + 1 })
-          lastPos = pos
           setPos('right')
         }
         break
