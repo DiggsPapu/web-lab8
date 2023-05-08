@@ -12,7 +12,7 @@ module.exports = {
   plugins: ['react'],
   rules: {
     semi: ['error', 'never'],
-    'import/no-extraneous-dependencies': ['error', { devDependencies: true, optionalDependencies: true, peerDependencies: true }],
+    'import/no-extraneous-dependencies': [0, { devDependencies: true, optionalDependencies: true, peerDependencies: true }],
     'import/no-unresolved': [0, { commonjs: true, amd: true }],
     'react/no-array-index-key': [0, { commonjs: true, amd: true }],
     'react/jsx-props-no-spreading': [0, { commonjs: true, amd: true }],
