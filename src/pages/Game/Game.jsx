@@ -28,7 +28,7 @@ export default function Game({ height = 10, len = 10 }) {
   const [maze, setMaze] = useState([])
   const [error, setError] = useState(null)
   const [isLoaded, setIsLoaded] = useState(false)
-  const [position, setPosition] = useState({ row: 2, col: 2 })
+  const [position, setPosition] = useState({ row: 2, col: 3 })
   const [arrayPos, setArrayPos] = useState(32)
   const [pos, setPos] = useState('right')
   let dimens = []
@@ -101,6 +101,7 @@ export default function Game({ height = 10, len = 10 }) {
   if (isLoaded && error == null) {
     array = maze.split('')
     dimens = getDimens(maze)
+    console.log(dimens)
     array = removeAll(array, '\n')
     return (
       <div className="game">
@@ -116,7 +117,7 @@ export default function Game({ height = 10, len = 10 }) {
           gap: '0',
           position: 'absolute',
           top: '0px',
-          left: `${dimens[2]}px`,
+          left: '0px',
         }}
         >
           <div

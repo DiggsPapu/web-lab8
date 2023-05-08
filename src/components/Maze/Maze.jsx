@@ -76,7 +76,20 @@ export default function Maze({
       }
       >
         <div className="city-day-style">
-          <div className="maze">
+          <div style={{
+            width: '100%',
+            height: '100%',
+            display: 'grid',
+            gridTemplateRows: `repeat(${dimens[0]},${dimens[3]}px)`,
+            gridTemplateColumns: `repeat(${dimens[1]},${dimens[2]}px)`,
+            alignContent: 'end',
+            alignItems: 'end',
+            gap: '0',
+            position: 'absolute',
+            top: '0px',
+            left: '0px',
+          }}
+          >
             {
           maze.map((item, i) => (
             <BuildingWall
@@ -101,7 +114,20 @@ export default function Maze({
       }
       >
         <div className="war-style">
-          <div className="maze">
+          <div style={{
+            width: '100%',
+            height: '100%',
+            display: 'grid',
+            gridTemplateRows: `repeat(${dimens[0]},${dimens[3]}px)`,
+            gridTemplateColumns: `repeat(${dimens[1]},${dimens[2]}px)`,
+            alignContent: 'end',
+            alignItems: 'end',
+            gap: '0',
+            position: 'absolute',
+            top: '0px',
+            left: '0px',
+          }}
+          >
             {
           maze.map((item, i) => (
             <WarWall
