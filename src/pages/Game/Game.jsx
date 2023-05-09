@@ -36,8 +36,6 @@ export default function Game({ height = 10, len = 50 }) {
   function handleKeyDown(event) {
     switch (event.key) {
       case 'ArrowUp':
-        console.log(array)
-        console.log(arrayPos - dimens[1])
         if (array[arrayPos - dimens[1]] === ' ' || array[arrayPos - dimens[1]] === 'p') {
           setArrayPos(arrayPos - dimens[1])
           setPosition({ row: position.row - 1, col: position.col })
@@ -45,8 +43,6 @@ export default function Game({ height = 10, len = 50 }) {
         }
         break
       case 'ArrowDown':
-        console.log(array)
-        console.log(arrayPos + dimens[1])
         if (array[arrayPos + dimens[1]] === ' ' || array[arrayPos + dimens[1]] === 'p') {
           setArrayPos(arrayPos + dimens[1])
           setPosition({ row: position.row + 1, col: position.col })
@@ -54,8 +50,6 @@ export default function Game({ height = 10, len = 50 }) {
         }
         break
       case 'ArrowLeft':
-        console.log(array)
-        console.log(arrayPos - 1)
         if (array[arrayPos - 1] === ' ' || array[arrayPos - 1] === 'p') {
           setArrayPos(arrayPos - 1)
           setPosition({ row: position.row, col: position.col - 1 })
@@ -63,8 +57,6 @@ export default function Game({ height = 10, len = 50 }) {
         }
         break
       case 'ArrowRight':
-        console.log(array)
-        console.log(arrayPos + 1)
         if (array[arrayPos + 1] === ' ' || array[arrayPos + 1] === 'p') {
           setArrayPos(arrayPos + 1)
           setPosition({ row: position.row, col: position.col + 1 })
