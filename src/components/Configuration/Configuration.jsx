@@ -1,16 +1,56 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import {
   TextField, Select, MenuItem, FormControl, InputLabel, Switch, Button, Stack,
 } from '@mui/material'
 import Player from '@components/Player/Player'
-import Pills from '@components/Pills/Pills'
 import Maze from '../Maze/Maze'
+import './Configuration.css'
 
+function removeAll(arr, target) {
+  let i = 0
+  while (i < arr.length) {
+    if (arr[i] === target) {
+      arr.splice(i, 1)
+    } else {
+      i += 1
+    }
+  }
+  return arr
+}
+function getDimens(maze) {
+  let rows = 0
+  for (let j = 0; j < maze.length; j += 1) {
+    if (maze[j] === '\n') {
+      rows += 1
+    }
+  }
+  return [rows - 2, maze.indexOf('\n', 0), 700 / maze.indexOf('\n', 0), 300 / (rows - 2)]
+}
 export default function Configuration() {
   const label = { inputProps: { 'aria-label': 'Color switch demo' } }
+  const [maze, setMaze] = useState([])
+  const [error, setError] = useState(null)
+  const [isLoaded, setIsLoaded] = useState(false)
   const [properties, setProperties] = useState({
     username: 'Username', character: 'Thanos', theme: 1, inverted: false, length: 10, height: 10,
   })
+  const [dimens, setDimens] = useState([])
+  useEffect(() => {
+    fetch(`https://maze.uvgenios.online/?type=text&w=${properties.length}&h=${properties.height}`)
+      // It does with text and not Json bc it has ASCII characters and not json.
+      .then((res) => res.text())
+      .then(
+        (res) => {
+          setIsLoaded(true)
+          setDimens(getDimens(res))
+          setMaze(removeAll(res.split(''), '\n'))
+        },
+        (mistake) => {
+          setIsLoaded(true)
+          setError(mistake)
+        },
+      )
+  }, [properties.length, properties.height])
   const handleChangeCharacter = (event) => {
     setProperties({ ...properties, character: event.target.value })
     console.log(properties)
@@ -37,8 +77,8 @@ export default function Configuration() {
       setProperties({ ...properties, height: event.target.value })
     }
   }
-  return (
-    <>
+  if (isLoaded && error == null) {
+    return (
       <div>
         <div style={{
           width: '100%',
@@ -47,22 +87,43 @@ export default function Configuration() {
           flexDirection: 'column',
           alignSelf: 'center',
           alignItems: 'center',
+          color: 'white',
         }}
         >
+          <h1>Maze Settings</h1>
           <Stack
             direction="row"
             spacing={1}
             style={{
-              marginTop: '2%', marginLeft: '3%', marginRight: '3%', width: '475px', alignItems: 'center',
+              marginTop: '2%', marginLeft: '3%', marginRight: '3%', width: '700px', alignItems: 'center',
             }}
           >
-            <Button variant="standard" onClick={mazeTheme1} style={{ width: '33%', height: '100%' }}>Building Night Style</Button>
-            <Button variant="standard" onClick={mazeTheme2} style={{ width: '25%', height: '100%' }}>Building Day Style</Button>
-            <Button variant="standard" onClick={mazeTheme3} style={{ width: '25%', height: '100%' }} autoCapitalize="off">War Style</Button>
+            <Button
+              variant="standard"
+              onClick={mazeTheme1}
+              style={{ width: '37%', height: '100%' }}
+            >
+              Building Night
+
+            </Button>
+            <Button
+              variant="standard"
+              onClick={mazeTheme2}
+              style={{ width: '37%', height: '100%' }}
+            >
+              Building Day
+            </Button>
+            <Button
+              variant="standard"
+              onClick={mazeTheme3}
+              style={{ width: '37%', height: '100%' }}
+            >
+              War
+            </Button>
             <Switch {...label} defaultChecked color="warning" value={properties.inverted} onClick={handleMazeColorInversion} />
           </Stack>
           <div style={{
-            width: '475px', height: '300px',
+            width: '700px', height: '300px',
           }}
           >
             <Maze
@@ -70,11 +131,15 @@ export default function Configuration() {
               style={{
                 width: '700px', height: '300px', position: 'relative', top: '0px', left: '0px',
               }}
-              dimens={[31, 21, 700 / 31, 300 / 21]}
+              maze={maze}
+              dimens={dimens}
               inverted={properties.inverted}
             />
           </div>
-          <div style={{ marginTop: '11%', display: 'flex', flexDirection: 'row' }}>
+          <div style={{
+            marginTop: '2%', marginBottom: '2%', display: 'flex', flexDirection: 'row',
+          }}
+          >
             <TextField
               label="Height"
               helperText="Maze height (bigger than 4 less than 100)"
@@ -84,6 +149,11 @@ export default function Configuration() {
               variant="standard"
               style={{ marginRight: '2%', marginLeft: '0%' }}
               id="MazeHeight"
+              color="warning"
+              focused
+              InputProps={{
+                style: { color: 'white' }, // change font color here
+              }}
             />
             <TextField
               label="Length"
@@ -93,28 +163,47 @@ export default function Configuration() {
               onChange={handleChangeMazeLength}
               variant="standard"
               id="MazeLength"
+              color="warning"
+              focused
+              InputProps={{
+                style: { color: 'white' }, // change font color here
+              }}
             />
           </div>
+          <div style={{
+            display: 'flex', flexDirection: 'row', alignItems: 'center', marginBottom: '3%',
+          }}
+          >
+            <FormControl variant="standard" sx={{ m: 1, minWidth: 120 }} color="warning" focused>
+              <InputLabel>Character Selection</InputLabel>
+              <Select value={properties.character} onChange={handleChangeCharacter} style={{ color: 'white' }}>
+                <MenuItem value="" color="warning">
+                  <em>None</em>
+                </MenuItem>
+                <MenuItem value="Thanos" color="warning">Thanos</MenuItem>
+                <MenuItem value="Venom">Venom</MenuItem>
+                <MenuItem value="Carnage">Carnage</MenuItem>
+                <MenuItem value="Spiderman">Spiderman</MenuItem>
+              </Select>
+              <TextField
+                label="Username"
+                helperText="Enter your username"
+                variant="standard"
+                margin="normal"
+                id="username"
+                color="warning"
+                focused
+                InputProps={{
+                  style: { color: 'white' }, // change font color here
+                }}
+                style={{ postion: 'relative', top: '0px' }}
+              />
+            </FormControl>
+            <Player char={properties.character} altitude={200} />
+          </div>
+          <Button variant="contained" style={{ width: '50%' }} color="warning">Send</Button>
         </div>
       </div>
-      <div>
-        <FormControl variant="standard" sx={{ m: 1, minWidth: 120 }}>
-          <InputLabel>Character Selection</InputLabel>
-          <Select value={properties.character} onChange={handleChangeCharacter}>
-            <MenuItem value="">
-              <em>None</em>
-            </MenuItem>
-            <MenuItem value="Thanos">Thanos</MenuItem>
-            <MenuItem value="Venom">Venom</MenuItem>
-            <MenuItem value="Carnage">Carnage</MenuItem>
-            <MenuItem value="Spiderman">Spiderman</MenuItem>
-          </Select>
-          <Player char={properties.character} />
-        </FormControl>
-      </div>
-      <div>
-        <TextField label="Username" helperText="Enter your username" variant="standard" margin="normal" id="username" />
-      </div>
-    </>
-  )
+    )
+  }
 }

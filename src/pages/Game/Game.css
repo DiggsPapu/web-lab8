@@ -1,4 +1,10 @@
 .game {
   width: 1395px;
   height: 727px;
+  color: black;
+}
+.game-inverted {
+  width: 1395px;
+  height: 727px;
+  color: white;
 }

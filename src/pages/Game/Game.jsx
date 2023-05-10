@@ -24,7 +24,7 @@ function getDimens(maze) {
   }
   return [rows - 2, maze.indexOf('\n', 0), 1395 / maze.indexOf('\n', 0), 727 / (rows - 2)]
 }
-export default function Game({ height = 10, len = 50 }) {
+export default function Game({ height = 10, len = 10 }) {
   const [maze, setMaze] = useState([])
   const [error, setError] = useState(null)
   const [isLoaded, setIsLoaded] = useState(false)
@@ -93,7 +93,6 @@ export default function Game({ height = 10, len = 50 }) {
   if (isLoaded && error == null) {
     array = maze.split('')
     dimens = getDimens(maze)
-    console.log(dimens)
     array = removeAll(array, '\n')
     return (
       <div className="game">
