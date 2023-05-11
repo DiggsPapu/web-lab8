@@ -1,25 +1,34 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import {
-  createBrowserRouter,
-  RouterProvider,
+  createBrowserRouter, RouterProvider, Routes, Route,
 } from 'react-router-dom'
 import Game from '@pages/Game/Game'
 import Menu from '@pages/Menu/Menu'
+import Start from '@pages/Start/Start'
 import './index.css'
 
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <Game />,
+    element: <Menu />,
     children: [
       {
-        path: '/Game',
-        element: <Game />,
+        path: 'Start',
+        element: <Start />,
+      },
+      {
+        path: 'Game',
+        element: <Game len={10} height={10} />,
+      },
+      {
+        path: 'Menu',
+        element: <Menu />,
       },
     ],
   },
 ])
+
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <RouterProvider router={router} />

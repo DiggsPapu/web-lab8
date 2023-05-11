@@ -5,15 +5,20 @@ import {
 import Maze from '@components/Maze/Maze'
 import './Pills.css'
 
-export default function Pills(
-  mazeTheme1,
-  mazeTheme2,
-  mazeTheme3,
-  handleMazeColorInversion,
-  properties,
-  handleChangeMazeHeight,
-  handleChangeMazeLength,
-) {
+export default function Pills(props) {
+  const {
+    mazeTheme1,
+    mazeTheme2,
+    mazeTheme3,
+    handleMazeColorInversion,
+    handleChangeMazeHeight,
+    handleChangeMazeLength,
+    inverted,
+    theme,
+    height,
+    length,
+  } = props;
+
   const label = { inputProps: { 'aria-label': 'Color switch demo' } }
   return (
     <div style={{
@@ -35,41 +40,38 @@ export default function Pills(
         <Button variant="standard" onClick={mazeTheme1} style={{ width: '33%', height: '100%' }}>Building Night Style</Button>
         <Button variant="standard" onClick={mazeTheme2} style={{ width: '25%', height: '100%' }}>Building Day Style</Button>
         <Button variant="standard" onClick={mazeTheme3} style={{ width: '25%', height: '100%' }} autoCapitalize="off">War Style</Button>
-        <Switch {...label} defaultChecked color="warning" value={properties.inverted} onClick={handleMazeColorInversion} />
+        <Switch {...label} defaultChecked color="warning" value={inverted} onClick={handleMazeColorInversion} />
       </Stack>
       <div style={{
-        width: '475px', height: '300px',
+        marginTop: '2%', marginLeft: '3%', marginRight: '3%', width: '475px', alignItems: 'center',
       }}
       >
-        <Maze
-          theme={properties.theme}
-          style={{
-            width: '700px', height: '300px', position: 'relative', top: '0px', left: '0px',
-          }}
-          dimens={[31, 21, 700 / 31, 300 / 21]}
-          inverted={properties.inverted}
-        />
-      </div>
-      <div style={{ marginTop: '11%', display: 'flex', flexDirection: 'row' }}>
-        <TextField
-          label="Height"
-          helperText="Maze height (bigger than 4 less than 100)"
-          type="number"
-          value={properties.height}
-          onChange={handleChangeMazeHeight}
-          variant="standard"
-          style={{ marginRight: '2%', marginLeft: '0%' }}
-          id="MazeHeight"
-        />
-        <TextField
-          label="Length"
-          helperText="Maze length (bigger than 4 less than 100)"
-          type="number"
-          value={properties.length}
-          onChange={handleChangeMazeLength}
-          variant="standard"
-          id="MazeLength"
-        />
+        <Stack
+          direction="row"
+          spacing={1}
+          alignItems="center"
+        >
+          <TextField
+            label="Height"
+            type="number"
+            InputLabelProps={{
+              shrink: true,
+            }}
+            style={{ width: '33%' }}
+            onChange={handleChangeMazeHeight}
+            value={height}
+          />
+          <TextField
+            label="Width"
+            type="number"
+            InputLabelProps={{
+              shrink: true,
+            }}
+            style={{ width: '33%' }}
+            onChange={handleChangeMazeLength}
+            value={length}
+          />
+        </Stack>
       </div>
     </div>
   )

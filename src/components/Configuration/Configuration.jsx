@@ -2,9 +2,11 @@ import React, { useState, useEffect } from 'react'
 import {
   TextField, Select, MenuItem, FormControl, InputLabel, Switch, Button, Stack,
 } from '@mui/material'
+import { Link } from 'react-router-dom'
 import Player from '@components/Player/Player'
 import Maze from '../Maze/Maze'
 import './Configuration.css'
+import Pills from '../Pills/Pills'
 
 function removeAll(arr, target) {
   let i = 0
@@ -53,7 +55,6 @@ export default function Configuration() {
   }, [properties.length, properties.height])
   const handleChangeCharacter = (event) => {
     setProperties({ ...properties, character: event.target.value })
-    console.log(properties)
   }
   const mazeTheme1 = () => {
     setProperties({ ...properties, theme: 1 })
@@ -91,37 +92,14 @@ export default function Configuration() {
         }}
         >
           <h1>Maze Settings</h1>
-          <Stack
-            direction="row"
-            spacing={1}
-            style={{
-              marginTop: '2%', marginLeft: '3%', marginRight: '3%', width: '700px', alignItems: 'center',
-            }}
-          >
-            <Button
-              variant="standard"
-              onClick={mazeTheme1}
-              style={{ width: '37%', height: '100%' }}
-            >
-              Building Night
-
-            </Button>
-            <Button
-              variant="standard"
-              onClick={mazeTheme2}
-              style={{ width: '37%', height: '100%' }}
-            >
-              Building Day
-            </Button>
-            <Button
-              variant="standard"
-              onClick={mazeTheme3}
-              style={{ width: '37%', height: '100%' }}
-            >
-              War
-            </Button>
-            <Switch {...label} defaultChecked color="warning" value={properties.inverted} onClick={handleMazeColorInversion} />
-          </Stack>
+          <Pills
+            mazeTheme1={mazeTheme1}
+            mazeTheme2={mazeTheme2}
+            mazeTheme3={mazeTheme3}
+            handleMazeColorInversion={handleMazeColorInversion}
+            inverted={properties.inverted}
+            theme={properties.theme}
+          />
           <div style={{
             width: '700px', height: '300px',
           }}
@@ -201,7 +179,9 @@ export default function Configuration() {
             </FormControl>
             <Player char={properties.character} altitude={200} />
           </div>
-          <Button variant="contained" style={{ width: '50%' }} color="warning">Send</Button>
+          <Link to="/Game">
+            <Button variant="contained" style={{ width: '50%' }} color="warning">Send</Button>
+          </Link>
         </div>
       </div>
     )

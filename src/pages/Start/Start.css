@@ -1,0 +1,9 @@
+body {
+    background-color: black;
+    color: white;
+}
+.start{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
