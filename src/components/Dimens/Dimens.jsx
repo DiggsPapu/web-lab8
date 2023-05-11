@@ -53,6 +53,6 @@ export default function Dimens(props) {
 Dimens.propTypes = {
   handleChangeMazeLength: PropTypes.func.isRequired,
   handleChangeMazeHeight: PropTypes.func.isRequired,
-  height: PropTypes.number.isRequired,
-  length: PropTypes.number.isRequired,
+  height: PropTypes.string.isRequired,
+  length: PropTypes.string.isRequired,
 }
