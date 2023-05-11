@@ -7,6 +7,7 @@ import Player from '@components/Player/Player'
 import Maze from '../Maze/Maze'
 import './Configuration.css'
 import Pills from '../Pills/Pills'
+import Dimens from './Dimens/Dimens'
 
 function removeAll(arr, target) {
   let i = 0
@@ -114,40 +115,12 @@ export default function Configuration() {
               inverted={properties.inverted}
             />
           </div>
-          <div style={{
-            marginTop: '2%', marginBottom: '2%', display: 'flex', flexDirection: 'row',
-          }}
-          >
-            <TextField
-              label="Height"
-              helperText="Maze height (bigger than 4 less than 100)"
-              type="number"
-              value={properties.height}
-              onChange={handleChangeMazeHeight}
-              variant="standard"
-              style={{ marginRight: '2%', marginLeft: '0%' }}
-              id="MazeHeight"
-              color="warning"
-              focused
-              InputProps={{
-                style: { color: 'white' }, // change font color here
-              }}
-            />
-            <TextField
-              label="Length"
-              helperText="Maze length (bigger than 4 less than 100)"
-              type="number"
-              value={properties.length}
-              onChange={handleChangeMazeLength}
-              variant="standard"
-              id="MazeLength"
-              color="warning"
-              focused
-              InputProps={{
-                style: { color: 'white' }, // change font color here
-              }}
-            />
-          </div>
+          <Dimens
+            handleChangeMazeLength={handleChangeMazeLength}
+            handleChangeMazeHeight={handleChangeMazeHeight}
+            height={properties.height}
+            length={properties.length}
+          />
           <div style={{
             display: 'flex', flexDirection: 'row', alignItems: 'center', marginBottom: '3%',
           }}
