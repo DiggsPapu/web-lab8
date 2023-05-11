@@ -3,8 +3,8 @@ import { Button } from '@mui/material'
 import { Link } from 'react-router-dom'
 import Maze from '@components/Maze/Maze'
 import Pills from '@components/Pills/Pills'
-import Dimens from '@components/Configuration/Dimens/Dimens'
-import Form from '@components/Configuration/Form/Form'
+import Dimens from '@components/Dimens/Dimens'
+import Form from '@components/Form/Form'
 import './Menu.css'
 
 function removeAll(arr, target) {
