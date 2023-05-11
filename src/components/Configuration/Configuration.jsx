@@ -1,9 +1,6 @@
 import React, { useState, useEffect } from 'react'
-import {
-  TextField, Select, MenuItem, FormControl, InputLabel, Button,
-} from '@mui/material'
+import { Button } from '@mui/material'
 import { Link } from 'react-router-dom'
-import Player from '@components/Player/Player'
 import Maze from '../Maze/Maze'
 import './Configuration.css'
 import Pills from '../Pills/Pills'
