@@ -2,7 +2,8 @@ import React, { useState } from 'react'
 import './App.css'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Game from '@pages/Game/Game'
-import Menu from './pages/Menu/Menu'
+import Menu from '@pages/Menu/Menu'
+import Start from '@pages/Start/Start'
 
 export default function App() {
   const [properties, setProperties] = useState({
@@ -39,6 +40,10 @@ export default function App() {
         <Route
           path="/"
           exact
+          element={(<Start />)}
+        />
+        <Route
+          path="/Menu"
           element={(
             <Menu
               mazeTheme1={mazeTheme1}
@@ -56,10 +61,18 @@ export default function App() {
             />
           )}
         />
-        {/* <Route 
-        path="/Game"
-        element={}
-        /> */}
+        <Route
+          path="/Game"
+          element={(
+            <Game
+              length={properties.length}
+              height={properties.height}
+              inverted={properties.inverted}
+              theme={properties.theme}
+              character={properties.character}
+            />
+          )}
+        />
       </Routes>
     </BrowserRouter>
   )

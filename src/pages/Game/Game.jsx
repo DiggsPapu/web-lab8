@@ -24,7 +24,9 @@ function getDimens(maze) {
   }
   return [rows - 2, maze.indexOf('\n', 0), 1395 / maze.indexOf('\n', 0), 727 / (rows - 2)]
 }
-export default function Game({ height = 10, len = 10 }) {
+export default function Game({
+  theme, inverted, height, length, character,
+}) {
   const [maze, setMaze] = useState([])
   const [error, setError] = useState(null)
   const [isLoaded, setIsLoaded] = useState(false)
@@ -75,7 +77,7 @@ export default function Game({ height = 10, len = 10 }) {
     }
   })
   useEffect(() => {
-    fetch(`https://maze.uvgenios.online/?type=text&w=${len}&h=${height}`)
+    fetch(`https://maze.uvgenios.online/?type=text&w=${length}&h=${height}`)
       // It does with text and not Json bc it has ASCII characters and not json.
       .then((res) => res.text())
       .then(
@@ -96,7 +98,7 @@ export default function Game({ height = 10, len = 10 }) {
     array = removeAll(array, '\n')
     return (
       <div className="game">
-        <Maze theme={1} inverted={false} maze={array} dimens={dimens} />
+        <Maze theme={theme} inverted={inverted} maze={array} dimens={dimens} />
         <div style={{
           width: '100%',
           height: '100%',
@@ -116,7 +118,7 @@ export default function Game({ height = 10, len = 10 }) {
               gridRow: position.row, gridColumn: position.col, alighSelf: 'right', marginBottom: '10px',
             }}
           >
-            <Player position={pos} char="Venom" altitude={dimens[3]} />
+            <Player position={pos} char={character} altitude={dimens[3]} />
           </div>
         </div>
       </div>
@@ -130,6 +132,9 @@ export default function Game({ height = 10, len = 10 }) {
   )
 }
 Game.propTypes = {
-  len: PropTypes.number.isRequired,
-  height: PropTypes.number.isRequired,
+  length: PropTypes.string.isRequired,
+  height: PropTypes.string.isRequired,
+  character: PropTypes.string.isRequired,
+  theme: PropTypes.number.isRequired,
+  inverted: PropTypes.bool.isRequired,
 }
