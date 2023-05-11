@@ -8,6 +8,7 @@ import Maze from '../Maze/Maze'
 import './Configuration.css'
 import Pills from '../Pills/Pills'
 import Dimens from './Dimens/Dimens'
+import Form from './Form/Form'
 
 function removeAll(arr, target) {
   let i = 0
@@ -119,37 +120,10 @@ export default function Configuration() {
               height={properties.height}
               length={properties.length}
             />
-            <div style={{
-              display: 'flex', flexDirection: 'row', alignItems: 'center', marginBottom: '3%',
-            }}
-            >
-              <FormControl variant="standard" sx={{ m: 1, minWidth: 120 }} color="warning" focused>
-                <InputLabel>Character Selection</InputLabel>
-                <Select value={properties.character} onChange={handleChangeCharacter} style={{ color: 'white' }}>
-                  <MenuItem value="" color="warning">
-                    <em>None</em>
-                  </MenuItem>
-                  <MenuItem value="Thanos" color="warning">Thanos</MenuItem>
-                  <MenuItem value="Venom">Venom</MenuItem>
-                  <MenuItem value="Carnage">Carnage</MenuItem>
-                  <MenuItem value="Spiderman">Spiderman</MenuItem>
-                </Select>
-                <TextField
-                  label="Username"
-                  helperText="Enter your username"
-                  variant="standard"
-                  margin="normal"
-                  id="username"
-                  color="warning"
-                  focused
-                  InputProps={{
-                    style: { color: 'white' }, // change font color here
-                  }}
-                  style={{ postion: 'relative', top: '0px' }}
-                />
-              </FormControl>
-              <Player char={properties.character} altitude={200} />
-            </div>
+            <Form
+              handleChangeCharacter={handleChangeCharacter}
+              character={properties.character}
+            />
             <Link to="/Game">
               <Button variant="contained" style={{ width: '50%' }} color="warning">Send</Button>
             </Link>
