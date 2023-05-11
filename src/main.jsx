@@ -11,7 +11,6 @@ import './index.css'
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <Menu />,
     children: [
       {
         path: 'Start',
@@ -19,7 +18,7 @@ const router = createBrowserRouter([
       },
       {
         path: 'Game',
-        element: <Game len={10} height={10} />,
+        element: <Game len={20} height={10} />,
       },
       {
         path: 'Menu',

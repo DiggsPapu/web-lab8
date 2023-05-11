@@ -101,6 +101,7 @@ export default function Menu() {
               mazeTheme3={mazeTheme3}
               handleMazeColorInversion={handleMazeColorInversion}
               inverted={properties.inverted}
+              theme={properties.theme}
               style={{ width: '100%' }}
             />
             <Maze

@@ -40,11 +40,11 @@ export default function Form(props) {
           style={{ postion: 'relative', top: '0px' }}
         />
       </FormControl>
-      <Player char={character} altitude={200} />
+      <Player char={character} altitude={200} position="right" />
     </div>
   )
 }
 Form.propTypes = {
   handleChangeCharacter: PropTypes.func.isRequired,
-  character: PropTypes.number.isRequired,
+  character: PropTypes.string.isRequired,
 }

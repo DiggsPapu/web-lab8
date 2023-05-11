@@ -112,7 +112,9 @@ export default function Game({ height = 10, len = 10 }) {
         }}
         >
           <div
-            style={{ gridRow: position.row, gridColumn: position.col, alighSelf: 'right' }}
+            style={{
+              gridRow: position.row, gridColumn: position.col, alighSelf: 'right', marginBottom: '10px',
+            }}
           >
             <Player position={pos} char="Venom" altitude={dimens[3]} />
           </div>
