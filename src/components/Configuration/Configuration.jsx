@@ -85,13 +85,13 @@ export default function Configuration() {
           width: '100%',
           height: 'auto',
           display: 'flex',
-          flexDirection: 'column',
+          flexDirection: 'row',
           alignSelf: 'center',
           alignItems: 'center',
           color: 'white',
         }}
         >
-          <h1>Maze Settings</h1>
+          <h1 style={{ transform: 'rotate(-90deg)', fontSize: '500%', fontFamily: 'arial' }}>SETTINGS</h1>
           <div style={{
             width: '700px', height: 'auto', display: 'flex', flexDirection: 'column', alignItems: 'center',
           }}
