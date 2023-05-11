@@ -6,7 +6,7 @@ import Maze from '@components/Maze/Maze'
 import Pills from '@components/Pills/Pills'
 import Dimens from '@components/Dimens/Dimens'
 import Form from '@components/Form/Form'
-import './Menu.css'
+import './Config.css'
 
 function removeAll(arr, target) {
   let i = 0
@@ -29,7 +29,7 @@ function getDimens(maze) {
   return [rows - 2, maze.indexOf('\n', 0), 700 / maze.indexOf('\n', 0), 300 / (rows - 2)]
 }
 
-export default function Menu(props) {
+export default function Config(props) {
   const {
     mazeTheme1,
     mazeTheme2,
@@ -120,7 +120,7 @@ export default function Menu(props) {
     )
   }
 }
-Menu.propTypes = {
+Config.propTypes = {
   inverted: PropTypes.bool.isRequired,
   theme: PropTypes.oneOf([1, 2, 3]).isRequired,
   length: PropTypes.string.isRequired,

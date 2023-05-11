@@ -33,7 +33,7 @@ export default function Pills(props) {
         }}
       >
         <Button variant="standard" onClick={mazeTheme1} style={{ width: '33%', height: '100%' }}>Building Night Style</Button>
-        <Button variant="standard" onClick={mazeTheme2} style={{ width: '25%', height: '100%' }}>Building Day Style</Button>
+        <Button variant="standard" onClick={mazeTheme2} style={{ width: '33%', height: '100%' }}>Building Day Style</Button>
         <Button variant="standard" onClick={mazeTheme3} style={{ width: '25%', height: '100%' }} autoCapitalize="off">War Style</Button>
         <Switch {...label} defaultChecked color="warning" value={inverted} onClick={handleMazeColorInversion} />
       </Stack>

@@ -1,9 +1,18 @@
 body {
     background-color: black;
     color: white;
+    font-family: 'arial';
 }
 .start{
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
+}
+.start h1 {
+    transform: rotate(-90deg);
+    font-size: 500%;
+}
+.start img {
+    width: 80%;
+    height: auto;
 }

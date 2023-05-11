@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import './App.css'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Game from '@pages/Game/Game'
-import Menu from '@pages/Menu/Menu'
+import Config from '@pages/Config/Config'
 import Start from '@pages/Start/Start'
 
 export default function App() {
@@ -43,9 +43,9 @@ export default function App() {
           element={(<Start />)}
         />
         <Route
-          path="/Menu"
+          path="/Config"
           element={(
-            <Menu
+            <Config
               mazeTheme1={mazeTheme1}
               mazeTheme2={mazeTheme2}
               mazeTheme3={mazeTheme3}
