@@ -98,7 +98,7 @@ export default function Configuration() {
             mazeTheme3={mazeTheme3}
             handleMazeColorInversion={handleMazeColorInversion}
             inverted={properties.inverted}
-            theme={properties.theme}
+            style={{ width: '100%' }}
           />
           <div style={{
             width: '700px', height: '300px',

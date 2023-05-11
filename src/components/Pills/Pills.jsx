@@ -1,8 +1,8 @@
 import React from 'react'
 import {
-  TextField, Switch, Button, Stack,
+  Switch, Button, Stack,
 } from '@mui/material'
-import Maze from '@components/Maze/Maze'
+import PropTypes from 'prop-types'
 import './Pills.css'
 
 export default function Pills(props) {
@@ -11,13 +11,8 @@ export default function Pills(props) {
     mazeTheme2,
     mazeTheme3,
     handleMazeColorInversion,
-    handleChangeMazeHeight,
-    handleChangeMazeLength,
     inverted,
-    theme,
-    height,
-    length,
-  } = props;
+  } = props
 
   const label = { inputProps: { 'aria-label': 'Color switch demo' } }
   return (
@@ -34,7 +29,7 @@ export default function Pills(props) {
         direction="row"
         spacing={1}
         style={{
-          marginTop: '2%', marginLeft: '3%', marginRight: '3%', width: '475px', alignItems: 'center',
+          marginTop: '2%', marginLeft: '3%', marginRight: '3%', width: '55%', alignItems: 'center',
         }}
       >
         <Button variant="standard" onClick={mazeTheme1} style={{ width: '33%', height: '100%' }}>Building Night Style</Button>
@@ -42,37 +37,14 @@ export default function Pills(props) {
         <Button variant="standard" onClick={mazeTheme3} style={{ width: '25%', height: '100%' }} autoCapitalize="off">War Style</Button>
         <Switch {...label} defaultChecked color="warning" value={inverted} onClick={handleMazeColorInversion} />
       </Stack>
-      <div style={{
-        marginTop: '2%', marginLeft: '3%', marginRight: '3%', width: '475px', alignItems: 'center',
-      }}
-      >
-        <Stack
-          direction="row"
-          spacing={1}
-          alignItems="center"
-        >
-          <TextField
-            label="Height"
-            type="number"
-            InputLabelProps={{
-              shrink: true,
-            }}
-            style={{ width: '33%' }}
-            onChange={handleChangeMazeHeight}
-            value={height}
-          />
-          <TextField
-            label="Width"
-            type="number"
-            InputLabelProps={{
-              shrink: true,
-            }}
-            style={{ width: '33%' }}
-            onChange={handleChangeMazeLength}
-            value={length}
-          />
-        </Stack>
-      </div>
     </div>
   )
+}
+Pills.propTypes = {
+  inverted: PropTypes.bool.isRequired,
+  theme: PropTypes.oneOf([1, 2, 3]).isRequired,
+  handleMazeColorInversion: PropTypes.func.isRequired,
+  mazeTheme1: PropTypes.func.isRequired,
+  mazeTheme2: PropTypes.func.isRequired,
+  mazeTheme3: PropTypes.func.isRequired,
 }
