@@ -1,6 +1,7 @@
 import React from 'react'
 import { TextField } from '@mui/material'
 import PropTypes from 'prop-types'
+import './Dimens.css'
 
 export default function Dimens(props) {
   const {
@@ -11,38 +12,41 @@ export default function Dimens(props) {
   } = props
   return (
     <div style={{
-      marginTop: '2%', marginBottom: '2%', display: 'flex', flexDirection: 'row',
+      marginTop: '2%', marginBottom: '2%', display: 'flex', flexDirection: 'row', width: '100%',
     }}
     >
-      <TextField
-        label="Height"
-        helperText="Maze height (bigger than 4 less than 100)"
-        type="number"
-        value={height}
-        onChange={handleChangeMazeHeight}
-        variant="standard"
-        style={{ marginRight: '2%', marginLeft: '0%' }}
-        id="MazeHeight"
-        color="warning"
-        focused
-        InputProps={{
-          style: { color: 'white' }, // change font color here
-        }}
-      />
-      <TextField
-        label="Length"
-        helperText="Maze length (bigger than 4 less than 100)"
-        type="number"
-        value={length}
-        onChange={handleChangeMazeLength}
-        variant="standard"
-        id="MazeLength"
-        color="warning"
-        focused
-        InputProps={{
-          style: { color: 'white' }, // change font color here
-        }}
-      />
+      <div className="child">
+        <TextField
+          label="Height"
+          helperText="Maze height (bigger than 4 less than 100)"
+          type="number"
+          value={height}
+          onChange={handleChangeMazeHeight}
+          variant="standard"
+          id="MazeHeight"
+          color="warning"
+          focused
+          InputProps={{
+            style: { color: 'white' }, // change font color here
+          }}
+        />
+      </div>
+      <div className="child">
+        <TextField
+          label="Length"
+          helperText="Maze length (bigger than 4 less than 100)"
+          type="number"
+          value={length}
+          onChange={handleChangeMazeLength}
+          variant="standard"
+          id="MazeLength"
+          color="warning"
+          focused
+          InputProps={{
+            style: { color: 'white' }, // change font color here
+          }}
+        />
+      </div>
     </div>
   )
 }

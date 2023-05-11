@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import {
-  TextField, Select, MenuItem, FormControl, InputLabel, Switch, Button, Stack,
+  TextField, Select, MenuItem, FormControl, InputLabel, Button,
 } from '@mui/material'
 import { Link } from 'react-router-dom'
 import Player from '@components/Player/Player'
@@ -30,7 +30,6 @@ function getDimens(maze) {
   return [rows - 2, maze.indexOf('\n', 0), 700 / maze.indexOf('\n', 0), 300 / (rows - 2)]
 }
 export default function Configuration() {
-  const label = { inputProps: { 'aria-label': 'Color switch demo' } }
   const [maze, setMaze] = useState([])
   const [error, setError] = useState(null)
   const [isLoaded, setIsLoaded] = useState(false)
@@ -93,18 +92,18 @@ export default function Configuration() {
         }}
         >
           <h1>Maze Settings</h1>
-          <Pills
-            mazeTheme1={mazeTheme1}
-            mazeTheme2={mazeTheme2}
-            mazeTheme3={mazeTheme3}
-            handleMazeColorInversion={handleMazeColorInversion}
-            inverted={properties.inverted}
-            style={{ width: '100%' }}
-          />
           <div style={{
-            width: '700px', height: '300px',
+            width: '700px', height: 'auto', display: 'flex', flexDirection: 'column', alignItems: 'center',
           }}
           >
+            <Pills
+              mazeTheme1={mazeTheme1}
+              mazeTheme2={mazeTheme2}
+              mazeTheme3={mazeTheme3}
+              handleMazeColorInversion={handleMazeColorInversion}
+              inverted={properties.inverted}
+              style={{ width: '100%' }}
+            />
             <Maze
               theme={properties.theme}
               style={{
@@ -114,47 +113,47 @@ export default function Configuration() {
               dimens={dimens}
               inverted={properties.inverted}
             />
+            <Dimens
+              handleChangeMazeLength={handleChangeMazeLength}
+              handleChangeMazeHeight={handleChangeMazeHeight}
+              height={properties.height}
+              length={properties.length}
+            />
+            <div style={{
+              display: 'flex', flexDirection: 'row', alignItems: 'center', marginBottom: '3%',
+            }}
+            >
+              <FormControl variant="standard" sx={{ m: 1, minWidth: 120 }} color="warning" focused>
+                <InputLabel>Character Selection</InputLabel>
+                <Select value={properties.character} onChange={handleChangeCharacter} style={{ color: 'white' }}>
+                  <MenuItem value="" color="warning">
+                    <em>None</em>
+                  </MenuItem>
+                  <MenuItem value="Thanos" color="warning">Thanos</MenuItem>
+                  <MenuItem value="Venom">Venom</MenuItem>
+                  <MenuItem value="Carnage">Carnage</MenuItem>
+                  <MenuItem value="Spiderman">Spiderman</MenuItem>
+                </Select>
+                <TextField
+                  label="Username"
+                  helperText="Enter your username"
+                  variant="standard"
+                  margin="normal"
+                  id="username"
+                  color="warning"
+                  focused
+                  InputProps={{
+                    style: { color: 'white' }, // change font color here
+                  }}
+                  style={{ postion: 'relative', top: '0px' }}
+                />
+              </FormControl>
+              <Player char={properties.character} altitude={200} />
+            </div>
+            <Link to="/Game">
+              <Button variant="contained" style={{ width: '50%' }} color="warning">Send</Button>
+            </Link>
           </div>
-          <Dimens
-            handleChangeMazeLength={handleChangeMazeLength}
-            handleChangeMazeHeight={handleChangeMazeHeight}
-            height={properties.height}
-            length={properties.length}
-          />
-          <div style={{
-            display: 'flex', flexDirection: 'row', alignItems: 'center', marginBottom: '3%',
-          }}
-          >
-            <FormControl variant="standard" sx={{ m: 1, minWidth: 120 }} color="warning" focused>
-              <InputLabel>Character Selection</InputLabel>
-              <Select value={properties.character} onChange={handleChangeCharacter} style={{ color: 'white' }}>
-                <MenuItem value="" color="warning">
-                  <em>None</em>
-                </MenuItem>
-                <MenuItem value="Thanos" color="warning">Thanos</MenuItem>
-                <MenuItem value="Venom">Venom</MenuItem>
-                <MenuItem value="Carnage">Carnage</MenuItem>
-                <MenuItem value="Spiderman">Spiderman</MenuItem>
-              </Select>
-              <TextField
-                label="Username"
-                helperText="Enter your username"
-                variant="standard"
-                margin="normal"
-                id="username"
-                color="warning"
-                focused
-                InputProps={{
-                  style: { color: 'white' }, // change font color here
-                }}
-                style={{ postion: 'relative', top: '0px' }}
-              />
-            </FormControl>
-            <Player char={properties.character} altitude={200} />
-          </div>
-          <Link to="/Game">
-            <Button variant="contained" style={{ width: '50%' }} color="warning">Send</Button>
-          </Link>
         </div>
       </div>
     )

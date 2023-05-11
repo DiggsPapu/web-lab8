@@ -29,7 +29,7 @@ export default function Pills(props) {
         direction="row"
         spacing={1}
         style={{
-          marginTop: '2%', marginLeft: '3%', marginRight: '3%', width: '55%', alignItems: 'center',
+          marginTop: '2%', marginLeft: '3%', marginRight: '3%', width: '100%', alignItems: 'center',
         }}
       >
         <Button variant="standard" onClick={mazeTheme1} style={{ width: '33%', height: '100%' }}>Building Night Style</Button>
