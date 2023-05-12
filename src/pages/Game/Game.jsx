@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import Maze from '@components/Maze/Maze'
-import Player from '../../components/Player/Player'
+import Player from '@components/Player/Player'
+import Timer from '@components/Timer/Timer'
 import './Game.css'
 
 function removeAll(arr, target) {
@@ -132,14 +133,7 @@ export default function Game({
           >
             <Player position={pos} char={character} altitude={dimens[3]} />
           </div>
-          <div style={{
-            position: 'relative', top: '-40%', left: '1500%', color: 'orange', fontSize: '200%',
-          }}
-          >
-            Time
-            {' '}
-            {count}
-          </div>
+          <Timer time={count} />
         </div>
       </div>
     )

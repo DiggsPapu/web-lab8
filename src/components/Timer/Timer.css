@@ -1,0 +1,30 @@
+.glowing-circle {
+    width: 200px;
+    height: 200px;
+    border-radius: 100%;
+    background-color: transparent;
+    box-shadow: 0 0 2px 1px transparent, 0 0 2px 0 rgb(255, 128, 0);
+    animation: glow 2s ease-in-out infinite;
+    color: rgb(255, 128, 0);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  
+  @keyframes glow {
+    0% {
+      box-shadow: 0 0 2px 3px #fff, 0 0 2px 2px rgb(255, 128, 0);
+    }
+    50% {
+      box-shadow: 0 0 2px 6px rgb(255, 128, 0), 0 0 2px 2px #f00, 0 0 2px 3px #fff;
+    }
+  }
+  .glowing-circle h1 {
+    margin-top: 25%;
+  }
+  .glowing-circle h2 {
+    margin-top: 0%;
+    font-size: 300%;
+  }
