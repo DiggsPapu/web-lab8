@@ -1,6 +1,6 @@
-import React from 'react'
+import { React, useState } from 'react'
 import {
-  TextField, Select, MenuItem, FormControl, InputLabel,
+  TextField, Select, MenuItem, FormControl, InputLabel, Checkbox, FormControlLabel,
 } from '@mui/material'
 import Player from '@components/Player/Player'
 import PropTypes from 'prop-types'
@@ -10,6 +10,7 @@ export default function Form(props) {
     handleChangeCharacter,
     character,
   } = props
+  const [active, setActive] = useState(true)
   return (
     <div style={{
       display: 'flex', flexDirection: 'row', alignItems: 'center', marginBottom: '3%',
@@ -26,19 +27,35 @@ export default function Form(props) {
           <MenuItem value="Spiderman">Spiderman</MenuItem>
           <MenuItem value="Wolverine">Wolverine</MenuItem>
         </Select>
-        <TextField
-          label="Username"
-          helperText="Enter your username"
-          variant="standard"
-          margin="normal"
-          id="username"
-          color="warning"
-          focused
-          InputProps={{
-            style: { color: 'white' }, // change font color here
-          }}
-          style={{ postion: 'relative', top: '0px' }}
-        />
+        <div style={{ display: 'flex', flexDirection: 'row', width: '100%' }}>
+          <FormControlLabel
+            control={(
+              <Checkbox
+                checked={active}
+                onChange={() => setActive(!active)}
+                color="warning"
+              />
+          )}
+            label="Timer?"
+            color="warning"
+            style={{ marginRight: '20%' }}
+          />
+          <TextField
+            label="Time"
+            helperText="Enter the seconds that you want to play the game"
+            variant="standard"
+            margin="normal"
+            id="time"
+            color="warning"
+            type="number"
+            disabled={!active}
+            focused
+            InputProps={{
+              style: { color: 'white' }, // change font color here
+            }}
+            style={{ postion: 'relative', right: '0px', width: '50%' }}
+          />
+        </div>
       </FormControl>
       <Player char={character} altitude={200} position="right" />
     </div>
