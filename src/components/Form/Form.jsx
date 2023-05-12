@@ -25,6 +25,7 @@ export default function Form(props) {
           <MenuItem value="Venom">Venom</MenuItem>
           <MenuItem value="Carnage">Carnage</MenuItem>
           <MenuItem value="Spiderman">Spiderman</MenuItem>
+          <MenuItem value="Wolverine">Wolverine</MenuItem>
         </Select>
         <TextField
           label="Username"

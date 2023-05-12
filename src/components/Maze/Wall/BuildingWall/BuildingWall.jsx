@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Center from '@assets/Maze/BuildingSprites/buildingCenter.png'
 import Corner from '@assets/Maze/BuildingSprites/buildingCorner.png'
+import Side from '@assets/Maze/BuildingSprites/buildingSide.png'
 import Goal from '@assets/Maze/BuildingSprites/goal.png'
 import './BuildingWall.css'
 
@@ -11,10 +12,12 @@ function BuildingWall({ position = ' ' }) {
     return (
       <div className="street" />
     )
-  } if (position === '+' || position === '-') {
+  } if (position === '-') {
     image = Center
-  } else if (position === '|') {
+  } else if (position === '+') {
     image = Corner
+  } else if (position === '|') {
+    image = Side
   } else if (position === 'g') {
     image = Goal
   }

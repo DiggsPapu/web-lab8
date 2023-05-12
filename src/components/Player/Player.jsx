@@ -1,6 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import WolverineHorizontal from '@assets/Character/Wolverine.gif'
+import WolverineHorizontal from '@assets/Character/WolverineSprites/Wolverine.gif'
+import WolverineUp from '@assets/Character/WolverineSprites/WolverineUp.gif'
+import WolverineDown from '@assets/Character/WolverineSprites/WolverineDown.gif'
 import SpidermanHorizontal from '@assets/Character/SpidermanSprites/SpidermanWalking.gif'
 import VenomHorizontal from '@assets/Character/Venom/Venom.gif'
 import VenomUp from '@assets/Character/Venom/VenomUp.gif'
@@ -27,6 +29,11 @@ function Player({ char = 'Thanos', position = 'right', altitude = 727 / 21 }) {
     image = CarnageHorizontal
   } else if (char === 'Wolverine') {
     image = WolverineHorizontal
+    if (position === 'up') {
+      image = WolverineUp
+    } else if (position === 'down') {
+      image = WolverineDown
+    }
   } else if (char === 'Thanos') {
     if (position === 'up') {
       image = ThanosUp
