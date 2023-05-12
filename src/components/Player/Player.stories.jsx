@@ -7,7 +7,7 @@ export default {
     char: {
       type: { name: 'string', required: false },
       defaultValue: 'Thanos',
-      options: ['Spiderman', 'Venom', 'Wolverine', 'Carnage'],
+      options: ['Spiderman', 'Venom', 'Wolverine', 'Thanos'],
       control: { type: 'radio' },
     },
   },

@@ -4,10 +4,10 @@ import WolverineHorizontal from '@assets/Character/WolverineSprites/Wolverine.gi
 import WolverineUp from '@assets/Character/WolverineSprites/WolverineUp.gif'
 import WolverineDown from '@assets/Character/WolverineSprites/WolverineDown.gif'
 import SpidermanHorizontal from '@assets/Character/SpidermanSprites/SpidermanWalking.gif'
+import SpidermanJump from '@assets/Character/SpidermanSprites/SpidermanJump.gif'
 import VenomHorizontal from '@assets/Character/Venom/Venom.gif'
 import VenomUp from '@assets/Character/Venom/VenomUp.gif'
 import VenomDown from '@assets/Character/Venom/VenomDown.gif'
-import CarnageHorizontal from '@assets/Character/Carnage.gif'
 import ThanosHorizontal from '@assets/Character/ThanosSprites/Thanos.gif'
 import ThanosUp from '@assets/Character/ThanosSprites/thanosUp.gif'
 import ThanosDown from '@assets/Character/ThanosSprites/thanosDown.gif'
@@ -17,16 +17,17 @@ function Player({ char = 'Thanos', position = 'right', altitude = 727 / 21 }) {
   let image = ThanosHorizontal
   if (char === 'Spiderman') {
     image = SpidermanHorizontal
+    if (position === 'up') {
+      image = SpidermanJump
+    } else if (position === 'down') {
+      image = VenomDown
+    }
   } else if (char === 'Venom') {
     if (position === 'up') {
       image = VenomUp
     } else if (position === 'down') {
       image = VenomDown
-    } else {
-      image = VenomHorizontal
     }
-  } else if (char === 'Carnage') {
-    image = CarnageHorizontal
   } else if (char === 'Wolverine') {
     image = WolverineHorizontal
     if (position === 'up') {
