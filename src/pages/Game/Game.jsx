@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import Maze from '@components/Maze/Maze'
 import Player from '../../components/Player/Player'
@@ -33,6 +34,17 @@ export default function Game({
   const [position, setPosition] = useState({ row: 2, col: 3 })
   const [arrayPos, setArrayPos] = useState(32)
   const [pos, setPos] = useState('right')
+  const [count, setCount] = useState(10)
+  const history = useNavigate()
+  useEffect(() => {
+    if (count <= 0) {
+      history('/Fail')
+    }
+    const timer = setTimeout(() => {
+      setCount(count - 1)
+    }, 1000)
+    return () => clearTimeout(timer)
+  }, [count])
   let dimens = []
   let array = []
   function handleKeyDown(event) {
@@ -119,6 +131,14 @@ export default function Game({
             }}
           >
             <Player position={pos} char={character} altitude={dimens[3]} />
+          </div>
+          <div style={{
+            position: 'relative', top: '-40%', left: '1500%', color: 'orange', fontSize: '200%',
+          }}
+          >
+            Time
+            {' '}
+            {count}
           </div>
         </div>
       </div>

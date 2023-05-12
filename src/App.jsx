@@ -4,11 +4,23 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Game from '@pages/Game/Game'
 import Config from '@pages/Config/Config'
 import Start from '@pages/Start/Start'
+import Success from '@pages/Success/Success'
+import Fail from '@pages/Fail/Fail'
 
 export default function App() {
   const [properties, setProperties] = useState({
-    username: 'Username', character: 'Thanos', theme: 1, inverted: false, length: '10', height: '10',
+    username: 'Username', character: 'Thanos', theme: 1, inverted: false, length: '10', height: '10', time: '-1',
   })
+  // const handleTime = (event) => {
+  //   if (event.target.value > 0) {
+  //     setProperties({ ...properties, time: event.target.value })
+  //   }
+  // }
+  // const handleActiveTime = (event) => {
+  //   if (event.target.value === false) {
+  //     setProperties({ ...properties, time: '-1' })
+  //   }
+  // }
   const handleChangeCharacter = (event) => {
     setProperties({ ...properties, character: event.target.value })
   }
@@ -71,6 +83,18 @@ export default function App() {
               theme={properties.theme}
               character={properties.character}
             />
+          )}
+        />
+        <Route
+          path="/Success"
+          element={(
+            <Success />
+          )}
+        />
+        <Route
+          path="/Fail"
+          element={(
+            <Fail />
           )}
         />
       </Routes>
