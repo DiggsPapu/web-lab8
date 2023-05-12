@@ -35,7 +35,7 @@ export default function Game({
   const [position, setPosition] = useState({ row: 2, col: 3 })
   const [arrayPos, setArrayPos] = useState(32)
   const [pos, setPos] = useState('right')
-  const [count, setCount] = useState(10)
+  const [count, setCount] = useState(1151560)
   const history = useNavigate()
   useEffect(() => {
     if (count <= 0) {
@@ -133,7 +133,9 @@ export default function Game({
           >
             <Player position={pos} char={character} altitude={dimens[3]} />
           </div>
-          <Timer time={count} />
+          <div style={{ position: 'fixed', right: '0%', bottom: '0%' }}>
+            <Timer time={count} />
+          </div>
         </div>
       </div>
     )
