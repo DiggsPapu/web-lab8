@@ -25,7 +25,7 @@ function getDimens(maze) {
   return [rows - 2, maze.indexOf('\n', 0), 1395 / maze.indexOf('\n', 0), 727 / (rows - 2)]
 }
 export default function Game({
-  theme, inverted, height, length, character,
+  theme, inverted, height = 10, length = 10, character = 'Spiderman',
 }) {
   const [maze, setMaze] = useState([])
   const [error, setError] = useState(null)
