@@ -23,6 +23,7 @@ function Player({ char = 'Thanos', position = 'right', altitude = 727 / 21 }) {
       image = VenomDown
     }
   } else if (char === 'Venom') {
+    image = VenomHorizontal
     if (position === 'up') {
       image = VenomUp
     } else if (position === 'down') {

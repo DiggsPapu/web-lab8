@@ -1,4 +1,4 @@
-import { React, useState } from 'react'
+import { React } from 'react'
 import {
   TextField, Select, MenuItem, FormControl, InputLabel, Checkbox, FormControlLabel,
 } from '@mui/material'
@@ -8,9 +8,12 @@ import PropTypes from 'prop-types'
 export default function Form(props) {
   const {
     handleChangeCharacter,
+    handleHasTime,
+    handleTime,
+    time,
+    hasTime,
     character,
   } = props
-  const [active, setActive] = useState(true)
   return (
     <div style={{
       display: 'flex', flexDirection: 'row', alignItems: 'center', marginBottom: '3%',
@@ -31,8 +34,8 @@ export default function Form(props) {
           <FormControlLabel
             control={(
               <Checkbox
-                checked={active}
-                onChange={() => setActive(!active)}
+                checked={hasTime}
+                onChange={handleHasTime}
                 color="warning"
               />
           )}
@@ -48,7 +51,9 @@ export default function Form(props) {
             id="time"
             color="warning"
             type="number"
-            disabled={!active}
+            disabled={!hasTime}
+            onChange={handleTime}
+            value={time}
             focused
             InputProps={{
               style: { color: 'white' }, // change font color here
@@ -63,5 +68,9 @@ export default function Form(props) {
 }
 Form.propTypes = {
   handleChangeCharacter: PropTypes.func.isRequired,
+  handleHasTime: PropTypes.func.isRequired,
+  handleTime: PropTypes.func.isRequired,
+  time: PropTypes.string.isRequired,
+  hasTime: PropTypes.bool.isRequired,
   character: PropTypes.string.isRequired,
 }

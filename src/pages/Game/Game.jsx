@@ -27,7 +27,7 @@ function getDimens(maze) {
   return [rows - 2, maze.indexOf('\n', 0), 1395 / maze.indexOf('\n', 0), 727 / (rows - 2)]
 }
 export default function Game({
-  theme, inverted, height = 10, length = 10, character = 'Spiderman',
+  theme, inverted, height = 10, length = 10, character = 'Spiderman', hasTime = false, time = 60,
 }) {
   const [maze, setMaze] = useState([])
   const [error, setError] = useState(null)
@@ -35,10 +35,10 @@ export default function Game({
   const [position, setPosition] = useState({ row: 2, col: 3 })
   const [arrayPos, setArrayPos] = useState(32)
   const [pos, setPos] = useState('right')
-  const [count, setCount] = useState(1151560)
+  const [count, setCount] = useState(time)
   const history = useNavigate()
   useEffect(() => {
-    if (count <= 0) {
+    if (count === 0) {
       history('/Fail')
     }
     const timer = setTimeout(() => {
@@ -55,6 +55,8 @@ export default function Game({
           setArrayPos(arrayPos - dimens[1])
           setPosition({ row: position.row - 1, col: position.col })
           setPos('up')
+        } else if (array[arrayPos - dimens[1]] === 'g') {
+          history('/Success')
         }
         break
       case 'ArrowDown':
@@ -62,6 +64,8 @@ export default function Game({
           setArrayPos(arrayPos + dimens[1])
           setPosition({ row: position.row + 1, col: position.col })
           setPos('down')
+        } else if (array[arrayPos + dimens[1]] === 'g') {
+          history('/Success')
         }
         break
       case 'ArrowLeft':
@@ -69,6 +73,8 @@ export default function Game({
           setArrayPos(arrayPos - 1)
           setPosition({ row: position.row, col: position.col - 1 })
           setPos('left')
+        } else if (array[arrayPos - 1] === 'g') {
+          history('/Success')
         }
         break
       case 'ArrowRight':
@@ -76,6 +82,8 @@ export default function Game({
           setArrayPos(arrayPos + 1)
           setPosition({ row: position.row, col: position.col + 1 })
           setPos('right')
+        } else if (array[arrayPos + 1] === 'g') {
+          history('/Success')
         }
         break
       default:
@@ -133,7 +141,7 @@ export default function Game({
           >
             <Player position={pos} char={character} altitude={dimens[3]} />
           </div>
-          <div style={{ position: 'fixed', right: '0%', bottom: '0%' }}>
+          <div style={{ position: 'fixed', right: '0%', bottom: '0%' }} hidden={!hasTime}>
             <Timer time={count} />
           </div>
         </div>
@@ -153,4 +161,6 @@ Game.propTypes = {
   character: PropTypes.string.isRequired,
   theme: PropTypes.number.isRequired,
   inverted: PropTypes.bool.isRequired,
+  hasTime: PropTypes.bool.isRequired,
+  time: PropTypes.string.isRequired,
 }

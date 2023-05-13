@@ -38,6 +38,10 @@ export default function Config(props) {
     handleChangeCharacter,
     handleChangeMazeLength,
     handleChangeMazeHeight,
+    handleHasTime,
+    handleTime,
+    time,
+    hasTime,
     length,
     height,
     inverted,
@@ -109,6 +113,10 @@ export default function Config(props) {
             />
             <Form
               handleChangeCharacter={handleChangeCharacter}
+              handleHasTime={handleHasTime}
+              handleTime={handleTime}
+              time={time}
+              hasTime={hasTime}
               character={character}
             />
             <Link to="/Game">
@@ -126,11 +134,15 @@ Config.propTypes = {
   length: PropTypes.string.isRequired,
   height: PropTypes.string.isRequired,
   character: PropTypes.string.isRequired,
-  handleMazeColorInversion: PropTypes.func.isRequired,
+  hasTime: PropTypes.bool.isRequired,
+  time: PropTypes.string.isRequired,
+  handleTime: PropTypes.func.isRequired,
   mazeTheme1: PropTypes.func.isRequired,
   mazeTheme2: PropTypes.func.isRequired,
   mazeTheme3: PropTypes.func.isRequired,
+  handleMazeColorInversion: PropTypes.func.isRequired,
   handleChangeCharacter: PropTypes.func.isRequired,
   handleChangeMazeLength: PropTypes.func.isRequired,
   handleChangeMazeHeight: PropTypes.func.isRequired,
+  handleHasTime: PropTypes.func.isRequired,
 }

@@ -9,18 +9,16 @@ import Fail from '@pages/Fail/Fail'
 
 export default function App() {
   const [properties, setProperties] = useState({
-    username: 'Username', character: 'Thanos', theme: 1, inverted: false, length: '10', height: '10', time: '-1',
+    username: 'Username', character: 'Thanos', theme: 1, inverted: false, length: '10', height: '10', hasTime: false, time: '60',
   })
-  // const handleTime = (event) => {
-  //   if (event.target.value > 0) {
-  //     setProperties({ ...properties, time: event.target.value })
-  //   }
-  // }
-  // const handleActiveTime = (event) => {
-  //   if (event.target.value === false) {
-  //     setProperties({ ...properties, time: '-1' })
-  //   }
-  // }
+  const handleHasTime = (event) => {
+    setProperties({ ...properties, hasTime: event.target.checked })
+  }
+  const handleTime = (event) => {
+    if (event.target.value > 0) {
+      setProperties({ ...properties, time: event.target.value })
+    }
+  }
   const handleChangeCharacter = (event) => {
     setProperties({ ...properties, character: event.target.value })
   }
@@ -65,6 +63,10 @@ export default function App() {
               handleChangeCharacter={handleChangeCharacter}
               handleChangeMazeLength={handleChangeMazeLength}
               handleChangeMazeHeight={handleChangeMazeHeight}
+              handleHasTime={handleHasTime}
+              handleTime={handleTime}
+              time={properties.time}
+              hasTime={properties.hasTime}
               length={properties.length}
               height={properties.height}
               inverted={properties.inverted}
@@ -82,6 +84,10 @@ export default function App() {
               inverted={properties.inverted}
               theme={properties.theme}
               character={properties.character}
+              hasTime={properties.hasTime}
+              time={properties.hasTime
+                ? properties.time
+                : '-1'}
             />
           )}
         />
