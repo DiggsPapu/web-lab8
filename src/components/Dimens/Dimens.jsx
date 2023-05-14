@@ -12,7 +12,7 @@ export default function Dimens(props) {
   } = props
   return (
     <div style={{
-      marginTop: '2%', marginBottom: '2%', display: 'flex', flexDirection: 'row', width: '100%',
+      marginTop: '0.1%', marginBottom: '2%', display: 'flex', flexDirection: 'column', width: 'auto', justifyContent: 'space-evenly',
     }}
     >
       <div className="child">
@@ -27,7 +27,7 @@ export default function Dimens(props) {
           color="warning"
           focused
           InputProps={{
-            style: { color: 'white' }, // change font color here
+            style: { color: 'white', width: '100%' }, // change font color here
           }}
         />
       </div>
@@ -43,7 +43,7 @@ export default function Dimens(props) {
           color="warning"
           focused
           InputProps={{
-            style: { color: 'white' }, // change font color here
+            style: { color: 'white', width: '100%' }, // change font color here
           }}
         />
       </div>

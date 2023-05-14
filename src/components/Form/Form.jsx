@@ -16,7 +16,7 @@ export default function Form(props) {
   } = props
   return (
     <div style={{
-      display: 'flex', flexDirection: 'row', alignItems: 'center', marginBottom: '3%',
+      display: 'flex', flexDirection: 'row', alignItems: 'center', marginTop: '2%', marginBottom: '2%',
     }}
     >
       <FormControl variant="standard" sx={{ m: 1, minWidth: 120 }} color="warning" focused>
@@ -58,7 +58,7 @@ export default function Form(props) {
             InputProps={{
               style: { color: 'white' }, // change font color here
             }}
-            style={{ postion: 'relative', right: '0px', width: '50%' }}
+            style={{ postion: 'relative', right: '0px', width: '100%' }}
           />
         </div>
       </FormControl>

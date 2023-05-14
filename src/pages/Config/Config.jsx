@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { Button } from '@mui/material'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
@@ -19,36 +19,23 @@ function removeAll(arr, target) {
   }
   return arr
 }
-function getDimens(maze) {
+function getDimens(maze, myDivRef) {
   let rows = 0
   for (let j = 0; j < maze.length; j += 1) {
     if (maze[j] === '\n') {
       rows += 1
     }
   }
-  return [rows - 2, maze.indexOf('\n', 0), 700 / maze.indexOf('\n', 0), 300 / (rows - 2)]
+  return [rows - 2, maze.indexOf('\n', 0), myDivRef.current.offsetWidth / maze.indexOf('\n', 0), myDivRef.current.offsetHeight / (rows - 2)]
 }
 
 export default function Config(props) {
   const {
-    mazeTheme1,
-    mazeTheme2,
-    mazeTheme3,
-    handleMazeColorInversion,
-    handleChangeCharacter,
-    handleChangeMazeLength,
-    handleChangeMazeHeight,
-    handleHasTime,
-    handleTime,
-    time,
-    hasTime,
-    length,
-    height,
-    inverted,
-    theme,
-    character,
+    mazeTheme1, mazeTheme2, mazeTheme3, handleMazeColorInversion, handleChangeCharacter,
+    handleChangeMazeLength, handleChangeMazeHeight, handleHasTime, handleTime, time, hasTime,
+    length, height, inverted, theme, character,
   } = props
-
+  const myDivRef = useRef(null)
   const [maze, setMaze] = useState([])
   const [error, setError] = useState(null)
   const [isLoaded, setIsLoaded] = useState(false)
@@ -60,7 +47,7 @@ export default function Config(props) {
       .then(
         (res) => {
           setIsLoaded(true)
-          setDimens(getDimens(res))
+          setDimens(getDimens(res, myDivRef))
           setMaze(removeAll(res.split(''), '\n'))
         },
         (mistake) => {
@@ -71,29 +58,12 @@ export default function Config(props) {
   }, [length, height])
   if (isLoaded && error == null) {
     return (
-      <div style={{
-        width: '100%',
-        height: 'auto',
-        display: 'flex',
-        flexDirection: 'row',
-        alignSelf: 'center',
-        alignItems: 'center',
-        color: 'white',
-      }}
-      >
-        <h1 style={{ transform: 'rotate(-90deg)', fontSize: '500%', fontFamily: 'arial' }}>SETTINGS</h1>
+      <div className="config">
+        <h1>SETTINGS</h1>
         <div style={{
-          width: '700px', height: 'auto', display: 'flex', flexDirection: 'column', alignItems: 'center',
+          width: '70%', height: 'auto', display: 'flex', flexDirection: 'column', alignItems: 'center',
         }}
         >
-          <div style={{ width: '700px', height: '500px' }}>
-            <Maze
-              theme={theme}
-              maze={maze}
-              dimens={dimens}
-              inverted={inverted}
-            />
-          </div>
           <Pills
             mazeTheme1={mazeTheme1}
             mazeTheme2={mazeTheme2}
@@ -103,23 +73,33 @@ export default function Config(props) {
             theme={theme}
             style={{ width: '100%' }}
           />
-          <Dimens
-            handleChangeMazeLength={handleChangeMazeLength}
-            handleChangeMazeHeight={handleChangeMazeHeight}
-            height={height}
-            length={length}
-          />
-          <Form
-            handleChangeCharacter={handleChangeCharacter}
-            handleHasTime={handleHasTime}
-            handleTime={handleTime}
-            time={time}
-            hasTime={hasTime}
-            character={character}
-          />
-          <Link to="/Game">
-            <Button variant="contained" style={{ width: '50%' }} color="warning">Send</Button>
-          </Link>
+          <div className="maze" ref={myDivRef}>
+            <Maze
+              theme={theme}
+              maze={maze}
+              dimens={dimens}
+              inverted={inverted}
+            />
+          </div>
+          <div className="form">
+            <Dimens
+              handleChangeMazeLength={handleChangeMazeLength}
+              handleChangeMazeHeight={handleChangeMazeHeight}
+              height={height}
+              length={length}
+            />
+            <Form
+              handleChangeCharacter={handleChangeCharacter}
+              handleHasTime={handleHasTime}
+              handleTime={handleTime}
+              time={time}
+              hasTime={hasTime}
+              character={character}
+            />
+            <Link to="/Game">
+              <Button variant="contained" style={{ width: '100%' }} color="warning">Send</Button>
+            </Link>
+          </div>
         </div>
       </div>
     )
