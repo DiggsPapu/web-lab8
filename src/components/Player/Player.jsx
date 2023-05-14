@@ -5,6 +5,7 @@ import WolverineUp from '@assets/Character/WolverineSprites/WolverineUp.gif'
 import WolverineDown from '@assets/Character/WolverineSprites/WolverineDown.gif'
 import SpidermanHorizontal from '@assets/Character/SpidermanSprites/SpidermanWalking.gif'
 import SpidermanJump from '@assets/Character/SpidermanSprites/SpidermanJump.gif'
+import SpidermanDown from '@assets/Character/SpidermanSprites/SpidermanDown.gif'
 import VenomHorizontal from '@assets/Character/Venom/Venom.gif'
 import VenomUp from '@assets/Character/Venom/VenomUp.gif'
 import VenomDown from '@assets/Character/Venom/VenomDown.gif'
@@ -20,7 +21,7 @@ function Player({ char = 'Thanos', position = 'right', altitude = 727 / 21 }) {
     if (position === 'up') {
       image = SpidermanJump
     } else if (position === 'down') {
-      image = VenomDown
+      image = SpidermanDown
     }
   } else if (char === 'Venom') {
     image = VenomHorizontal

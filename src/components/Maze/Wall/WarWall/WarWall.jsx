@@ -25,18 +25,7 @@ function WarWall({ position = ' ' }) {
         : 'war-wall'
     }
     >
-      {
-          position === '|'
-            ? (
-              <>
-                <img src={image} alt="position" />
-                <img src={image} alt="position" />
-                <img src={image} alt="position" />
-              </>
-            )
-            : <img src={image} alt="position" />
-        }
-
+      <img src={image} alt="position" />
     </div>
   )
 }
