@@ -1,8 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import BackGround from '@assets/Maze/OldSprites/stone-street.png'
-import BuildingWall from './Wall/BuildingWall/BuildingWall'
-import WarWall from './Wall/WarWall/WarWall'
+import BuildingWall from '@components/Maze/Wall/BuildingWall/BuildingWall'
+import WarWall from '@components/Maze/Wall/WarWall/WarWall'
 import './Maze.css'
 
 export default function Maze({
