@@ -1,35 +1,25 @@
-.maze{  
-    width: 100%;
-    height: 100%;
-    display: grid;
-    grid-template-rows: repeat(21,34.6px);
-    grid-template-columns: repeat(31,45px);
-    align-content: end;
-    align-items: end;
-    gap: 0;
-    background-color: transparent;
-    position: 'absolute';
-    top: 0px;
-    left: 0px;
-
-  }
 .city-night-style{
     background-color: black;
+    width: 100%;
+    height: 100%;
 }
 .city-day-style{
     background-color: white;
-}
-.war-style{
     width: 100%;
     height: 100%;
+}
+.war-style{
     background-image: url('../../assets/Maze/OldSprites/stone-street.png');
-    background-color: blue;
 }
 .inverted-colors {
     filter: invert(1);
+    width: 100%;
+    height: 100%;
 }
 .normal-colors{
     filter: none;
+    width: 100%;
+    height: 100%;
 }
 .grid-item {
     width: 34.6px;

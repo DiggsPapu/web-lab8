@@ -1,3 +1,34 @@
 body {
     background-color: black;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.config {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    align-self: center;
+    align-items: center;
+}
+.config h1 {
+    width: 20%;
+    margin-top: 20%;
+    font-size: 600%;
+    transform: rotate(-90deg);
+    
+}
+.form {
+    width: 70%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.maze {
+    width: 100%;
+    height: 20%;
+    position: relative;
+    bottom: 0%;
+    left: 0px;
 }

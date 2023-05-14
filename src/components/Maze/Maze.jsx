@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import BackGround from '@assets/Maze/OldSprites/stone-street.png'
 import BuildingWall from './Wall/BuildingWall/BuildingWall'
 import WarWall from './Wall/WarWall/WarWall'
 import './Maze.css'
@@ -31,78 +32,52 @@ export default function Maze({
 }) {
   if (theme === 1) {
     return (
-      <div className={
+      <div style={
         inverted
-          ? 'inverted-colors'
-          : 'normal-colors'
+          ? {
+            width: '100%', height: '100%', display: 'grid', gridTemplateRows: `repeat(${dimens[0]},${dimens[3]}px)`, gridTemplateColumns: `repeat(${dimens[1]},${dimens[2]}px)`, alignContent: 'end', alignItems: 'end', gap: '0', position: 'relative', top: '0px', left: '0px', backgroundColor: 'black', filter: 'inverted(1)',
+          }
+          : {
+            width: '100%', height: '100%', display: 'grid', gridTemplateRows: `repeat(${dimens[0]},${dimens[3]}px)`, gridTemplateColumns: `repeat(${dimens[1]},${dimens[2]}px)`, alignContent: 'end', alignItems: 'end', gap: '0', position: 'relative', top: '0px', left: '0px', backgroundColor: 'black', filter: 'inverted(0)',
+          }
       }
       >
-        <div className="city-night-style">
-          <div style={{
-            width: '100%',
-            height: '100%',
-            display: 'grid',
-            gridTemplateRows: `repeat(${dimens[0]},${dimens[3]}px)`,
-            gridTemplateColumns: `repeat(${dimens[1]},${dimens[2]}px)`,
-            alignContent: 'end',
-            alignItems: 'end',
-            gap: '0',
-            position: 'relative',
-            top: '0px',
-            left: '0px',
+        {
+      maze.map((item, i) => (
+        <BuildingWall
+          style={{
+            marginRight: '10%',
           }}
-          >
-            {
-          maze.map((item, i) => (
-            <BuildingWall
-              style={{
-                marginRight: '10%',
-              }}
-              position={item}
-              key={i}
-            />
-          ))
-        }
-          </div>
-        </div>
+          position={item}
+          key={i}
+        />
+      ))
+    }
       </div>
     )
   } if (theme === 2) {
     return (
-      <div className={
+      <div style={
         inverted
-          ? 'inverted-colors'
-          : 'normal-colors'
+          ? {
+            width: '100%', height: '100%', display: 'grid', gridTemplateRows: `repeat(${dimens[0]},${dimens[3]}px)`, gridTemplateColumns: `repeat(${dimens[1]},${dimens[2]}px)`, alignContent: 'end', alignItems: 'end', gap: '0', position: 'relative', top: '0px', left: '0px', backgroundColor: 'white', filter: 'inverted(1)',
+          }
+          : {
+            width: '100%', height: '100%', display: 'grid', gridTemplateRows: `repeat(${dimens[0]},${dimens[3]}px)`, gridTemplateColumns: `repeat(${dimens[1]},${dimens[2]}px)`, alignContent: 'end', alignItems: 'end', gap: '0', position: 'relative', top: '0px', left: '0px', backgroundColor: 'white', filter: 'inverted(0)',
+          }
       }
       >
-        <div className="city-day-style">
-          <div style={{
-            width: '100%',
-            height: '100%',
-            display: 'grid',
-            gridTemplateRows: `repeat(${dimens[0]},${dimens[3]}px)`,
-            gridTemplateColumns: `repeat(${dimens[1]},${dimens[2]}px)`,
-            alignContent: 'end',
-            alignItems: 'end',
-            gap: '0',
-            position: 'relative',
-            top: '0px',
-            left: '0px',
+        {
+      maze.map((item, i) => (
+        <BuildingWall
+          style={{
+            marginRight: '10%',
           }}
-          >
-            {
-          maze.map((item, i) => (
-            <BuildingWall
-              style={{
-                marginRight: '10%',
-              }}
-              position={item}
-              key={i}
-            />
-          ))
-        }
-          </div>
-        </div>
+          position={item}
+          key={i}
+        />
+      ))
+    }
       </div>
     )
   } if (theme === 3) {
@@ -114,19 +89,15 @@ export default function Maze({
       }
       >
         <div className="war-style">
-          <div style={{
-            width: '100%',
-            height: '100%',
-            display: 'grid',
-            gridTemplateRows: `repeat(${dimens[0]},${dimens[3]}px)`,
-            gridTemplateColumns: `repeat(${dimens[1]},${dimens[2]}px)`,
-            alignContent: 'end',
-            alignItems: 'end',
-            gap: '0',
-            position: 'relative',
-            top: '0px',
-            left: '0px',
-          }}
+          <div style={
+        inverted
+          ? {
+            width: '100%', height: '100%', display: 'grid', gridTemplateRows: `repeat(${dimens[0]},${dimens[3]}px)`, gridTemplateColumns: `repeat(${dimens[1]},${dimens[2]}px)`, alignContent: 'end', alignItems: 'end', gap: '0', position: 'relative', top: '0px', left: '0px', backgroundImage: `url(${BackGround})`, filter: 'inverted(1)',
+          }
+          : {
+            width: '100%', height: '100%', display: 'grid', gridTemplateRows: `repeat(${dimens[0]},${dimens[3]}px)`, gridTemplateColumns: `repeat(${dimens[1]},${dimens[2]}px)`, alignContent: 'end', alignItems: 'end', gap: '0', position: 'relative', top: '0px', left: '0px', backgroundImage: `url(${BackGround})`, filter: 'inverted(0)',
+          }
+      }
           >
             {
           maze.map((item, i) => (

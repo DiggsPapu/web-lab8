@@ -71,58 +71,55 @@ export default function Config(props) {
   }, [length, height])
   if (isLoaded && error == null) {
     return (
-      <div>
+      <div style={{
+        width: '100%',
+        height: 'auto',
+        display: 'flex',
+        flexDirection: 'row',
+        alignSelf: 'center',
+        alignItems: 'center',
+        color: 'white',
+      }}
+      >
+        <h1 style={{ transform: 'rotate(-90deg)', fontSize: '500%', fontFamily: 'arial' }}>SETTINGS</h1>
         <div style={{
-          width: '100%',
-          height: 'auto',
-          display: 'flex',
-          flexDirection: 'row',
-          alignSelf: 'center',
-          alignItems: 'center',
-          color: 'white',
+          width: '700px', height: 'auto', display: 'flex', flexDirection: 'column', alignItems: 'center',
         }}
         >
-          <h1 style={{ transform: 'rotate(-90deg)', fontSize: '500%', fontFamily: 'arial' }}>SETTINGS</h1>
-          <div style={{
-            width: '700px', height: 'auto', display: 'flex', flexDirection: 'column', alignItems: 'center',
-          }}
-          >
-            <Pills
-              mazeTheme1={mazeTheme1}
-              mazeTheme2={mazeTheme2}
-              mazeTheme3={mazeTheme3}
-              handleMazeColorInversion={handleMazeColorInversion}
-              inverted={inverted}
-              theme={theme}
-              style={{ width: '100%' }}
-            />
+          <div style={{ width: '700px', height: '500px' }}>
             <Maze
               theme={theme}
-              style={{
-                width: '700px', height: '300px', position: 'relative', top: '0px', left: '0px',
-              }}
               maze={maze}
               dimens={dimens}
               inverted={inverted}
             />
-            <Dimens
-              handleChangeMazeLength={handleChangeMazeLength}
-              handleChangeMazeHeight={handleChangeMazeHeight}
-              height={height}
-              length={length}
-            />
-            <Form
-              handleChangeCharacter={handleChangeCharacter}
-              handleHasTime={handleHasTime}
-              handleTime={handleTime}
-              time={time}
-              hasTime={hasTime}
-              character={character}
-            />
-            <Link to="/Game">
-              <Button variant="contained" style={{ width: '50%' }} color="warning">Send</Button>
-            </Link>
           </div>
+          <Pills
+            mazeTheme1={mazeTheme1}
+            mazeTheme2={mazeTheme2}
+            mazeTheme3={mazeTheme3}
+            handleMazeColorInversion={handleMazeColorInversion}
+            inverted={inverted}
+            theme={theme}
+            style={{ width: '100%' }}
+          />
+          <Dimens
+            handleChangeMazeLength={handleChangeMazeLength}
+            handleChangeMazeHeight={handleChangeMazeHeight}
+            height={height}
+            length={length}
+          />
+          <Form
+            handleChangeCharacter={handleChangeCharacter}
+            handleHasTime={handleHasTime}
+            handleTime={handleTime}
+            time={time}
+            hasTime={hasTime}
+            character={character}
+          />
+          <Link to="/Game">
+            <Button variant="contained" style={{ width: '50%' }} color="warning">Send</Button>
+          </Link>
         </div>
       </div>
     )
