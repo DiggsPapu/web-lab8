@@ -17,14 +17,14 @@ function removeAll(arr, target) {
   }
   return arr
 }
-function getDimens(maze, myDivRef) {
+function getDimens(maze) {
   let rows = 0
   for (let j = 0; j < maze.length; j += 1) {
     if (maze[j] === '\n') {
       rows += 1
     }
   }
-  return [rows - 2, maze.indexOf('\n', 0), myDivRef.current.offsetWidth / maze.indexOf('\n', 0), myDivRef.current.offsetHeight / (rows - 2)]
+  return [rows - 2, maze.indexOf('\n', 0), 1401 / maze.indexOf('\n', 0), 731 / (rows - 2)]
 }
 export default function Game({
   theme, inverted, height = 10, length = 10, character = 'Spiderman', hasTime = false, time = 60,
