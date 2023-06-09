@@ -41,7 +41,7 @@ export default function Game({
   const [dimens, setDimens] = useState([])
   useEffect(() => {
     if (count === 0) {
-      history('/Fail')
+      history('/20172/lab8/Fail')
     }
     const timer = setTimeout(() => {
       setCount(count - 1)
@@ -56,7 +56,7 @@ export default function Game({
           setPosition({ row: position.row - 1, col: position.col })
           setPos('up')
         } else if (maze[arrayPos - dimens[1]] === 'g') {
-          history('/Success')
+          history('/20172/lab8/Success')
         }
         break
       case 'ArrowDown':
@@ -65,7 +65,7 @@ export default function Game({
           setPosition({ row: position.row + 1, col: position.col })
           setPos('down')
         } else if (maze[arrayPos + dimens[1]] === 'g') {
-          history('/Success')
+          history('/20172/lab8/Success')
         }
         break
       case 'ArrowLeft':
@@ -74,7 +74,7 @@ export default function Game({
           setPosition({ row: position.row, col: position.col - 1 })
           setPos('left')
         } else if (maze[arrayPos - 1] === 'g') {
-          history('/Success')
+          history('/20172/lab8/Success')
         }
         break
       case 'ArrowRight':
@@ -83,7 +83,7 @@ export default function Game({
           setPosition({ row: position.row, col: position.col + 1 })
           setPos('right')
         } else if (maze[arrayPos + 1] === 'g') {
-          history('/Success')
+          history('/20172/lab8/Success')
         }
         break
       default:

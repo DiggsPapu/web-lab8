@@ -96,7 +96,7 @@ export default function Config(props) {
               hasTime={hasTime}
               character={character}
             />
-            <Link to="/Game">
+            <Link to="/20172/lab8/Game">
               <Button variant="contained" style={{ width: '100%' }} color="warning">Send</Button>
             </Link>
           </div>

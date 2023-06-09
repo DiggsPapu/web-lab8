@@ -48,12 +48,12 @@ export default function App() {
     <BrowserRouter>
       <Routes>
         <Route
-          path="/"
+          path="/20172/lab8/"
           exact
           element={(<Start />)}
         />
         <Route
-          path="/Config"
+          path="/20172/lab8/Config"
           element={(
             <Config
               mazeTheme1={mazeTheme1}
@@ -76,7 +76,7 @@ export default function App() {
           )}
         />
         <Route
-          path="/Game"
+          path="/20172/lab8/Game"
           element={(
             <Game
               length={properties.length}
@@ -92,13 +92,13 @@ export default function App() {
           )}
         />
         <Route
-          path="/Success"
+          path="/20172/lab8/Success"
           element={(
             <Success />
           )}
         />
         <Route
-          path="/Fail"
+          path="/20172/lab8/Fail"
           element={(
             <Fail />
           )}
