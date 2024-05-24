@@ -29,7 +29,6 @@ function getDimens(maze) {
 export default function Game({
   theme, inverted, height = 10, length = 10, character = 'Spiderman', hasTime = false, time = 60,
 }) {
-  const [maze, setMaze] = useState([])
   const [error, setError] = useState(null)
   const [isLoaded, setIsLoaded] = useState(false)
   const [position, setPosition] = useState({ row: 2, col: 3 })
@@ -39,9 +38,32 @@ export default function Game({
   const history = useNavigate()
   const myDivRef = useRef(null)
   const [dimens, setDimens] = useState([])
+  const [maze, setMaze] = useState([
+    '+', '-', '-', '+', '-', '-', '+', '-', '-', '+', '-', '-', '+', '-', '-', '+', '-', '-', '+', '-', '-', '+', '-', '-', '+', '-', '-', '+', '-', '-', '+',
+    '|', 'p', ' ', ' ', ' ', ' ', '|', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '|', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '|',
+    '+', ' ', ' ', '+', ' ', ' ', '+', '-', '-', '+', '-', '-', '+', '-', '-', '+', ' ', ' ', '+', ' ', ' ', '+', '-', '-', '+', ' ', ' ', '+', ' ', ' ', '+',
+    '|', ' ', ' ', '|', ' ', ' ', '|', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '|', ' ', ' ', '|', ' ', ' ', '|', ' ', ' ', ' ', ' ', ' ', '|', ' ', ' ', '|',
+    '+', '-', '-', '+', ' ', ' ', '+', ' ', ' ', '+', ' ', ' ', '+', '-', '-', '+', ' ', ' ', '+', '-', '-', '+', ' ', ' ', '+', '-', '-', '+', ' ', ' ', '+',
+    '|', ' ', ' ', ' ', ' ', ' ', '|', ' ', ' ', '|', ' ', ' ', ' ', ' ', ' ', '|', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '|', ' ', ' ', '|', ' ', ' ', '|',
+    '+', ' ', ' ', '+', ' ', ' ', '+', ' ', ' ', '+', '-', '-', '+', ' ', ' ', '+', '-', '-', '+', '-', '-', '+', '-', '-', '+', ' ', ' ', '+', ' ', ' ', '+',
+    '|', ' ', ' ', '|', ' ', ' ', '|', ' ', ' ', '|', ' ', ' ', '|', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '|', ' ', ' ', '|',
+    '+', ' ', ' ', '+', ' ', ' ', '+', ' ', ' ', '+', ' ', ' ', '+', '-', '-', '+', ' ', ' ', '+', '-', '-', '+', '-', '-', '+', ' ', ' ', '+', ' ', ' ', '+',
+    '|', ' ', ' ', '|', ' ', ' ', '|', ' ', ' ', ' ', ' ', ' ', '|', ' ', ' ', '|', ' ', ' ', '|', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '|', ' ', ' ', '|',
+    '+', ' ', ' ', '+', '-', '-', '+', '-', '-', '+', ' ', ' ', '+', ' ', ' ', '+', ' ', ' ', '+', '-', '-', '+', '-', '-', '+', '-', '-', '+', ' ', ' ', '+',
+    '|', ' ', ' ', '|', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '|', ' ', ' ', '|', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '|', ' ', ' ', ' ', ' ', ' ', '|',
+    '+', ' ', ' ', '+', ' ', ' ', '+', '-', '-', '+', '-', '-', '+', ' ', ' ', '+', '-', '-', '+', '-', '-', '+', ' ', ' ', '+', ' ', ' ', '+', '-', '-', '+',
+    '|', ' ', ' ', '|', ' ', ' ', ' ', ' ', ' ', '|', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '|', ' ', ' ', '|', ' ', ' ', ' ', ' ', ' ', '|',
+    '+', ' ', ' ', '+', '-', '-', '+', ' ', ' ', '+', ' ', ' ', '+', ' ', ' ', '+', ' ', ' ', '+', '-', '-', '+', ' ', ' ', '+', '-', '-', '+', ' ', ' ', '+',
+    '|', ' ', ' ', ' ', ' ', ' ', '|', ' ', ' ', '|', ' ', ' ', '|', ' ', ' ', '|', ' ', ' ', '|', ' ', ' ', ' ', ' ', ' ', '|', ' ', ' ', ' ', ' ', ' ', '|',
+    '+', ' ', ' ', '+', '-', '-', '+', ' ', ' ', '+', '-', '-', '+', ' ', ' ', '+', ' ', ' ', '+', ' ', ' ', '+', '-', '-', '+', ' ', ' ', '+', '-', '-', '+',
+    '|', ' ', ' ', '|', ' ', ' ', ' ', ' ', ' ', '|', ' ', ' ', ' ', ' ', ' ', '|', ' ', ' ', '|', ' ', ' ', ' ', ' ', ' ', '|', ' ', ' ', '|', ' ', ' ', '|',
+    '+', ' ', ' ', '+', ' ', ' ', '+', '-', '-', '+', ' ', ' ', '+', '-', '-', '+', ' ', ' ', '+', '-', '-', '+', ' ', ' ', '+', ' ', ' ', '+', ' ', ' ', '+',
+    '|', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '|', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '|', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'g', '|',
+    '+', '-', '-', '+', '-', '-', '+', '-', '-', '+', '-', '-', '+', '-', '-', '+', '-', '-', '+', '-', '-', '+', '-', '-', '+', '-', '-', '+', '-', '-', '+',
+  ])
   useEffect(() => {
     if (count === 0) {
-      history('/20172/lab8/Fail')
+      history('/Fail')
     }
     const timer = setTimeout(() => {
       setCount(count - 1)
@@ -56,7 +78,7 @@ export default function Game({
           setPosition({ row: position.row - 1, col: position.col })
           setPos('up')
         } else if (maze[arrayPos - dimens[1]] === 'g') {
-          history('/20172/lab8/Success')
+          history('/Success')
         }
         break
       case 'ArrowDown':
@@ -65,7 +87,7 @@ export default function Game({
           setPosition({ row: position.row + 1, col: position.col })
           setPos('down')
         } else if (maze[arrayPos + dimens[1]] === 'g') {
-          history('/20172/lab8/Success')
+          history('/Success')
         }
         break
       case 'ArrowLeft':
@@ -74,7 +96,7 @@ export default function Game({
           setPosition({ row: position.row, col: position.col - 1 })
           setPos('left')
         } else if (maze[arrayPos - 1] === 'g') {
-          history('/20172/lab8/Success')
+          history('/Success')
         }
         break
       case 'ArrowRight':
@@ -83,7 +105,7 @@ export default function Game({
           setPosition({ row: position.row, col: position.col + 1 })
           setPos('right')
         } else if (maze[arrayPos + 1] === 'g') {
-          history('/20172/lab8/Success')
+          history('/Success')
         }
         break
       default:
@@ -109,12 +131,13 @@ export default function Game({
           setArrayPos(res.indexOf('p', 0))
         },
         (mistake) => {
-          setIsLoaded(true)
           setError(mistake)
+          setIsLoaded(true)
+          setDimens([20 - 1, 31, 805 / 31, 445 / (20 - 1)])
         },
       )
   }, [myDivRef])
-  if (isLoaded && error == null) {
+  if (isLoaded) {
     return (
       <div className="game" ref={myDivRef}>
         <Maze theme={theme} inverted={inverted} maze={maze} dimens={dimens} />
